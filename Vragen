@@ -1,0 +1,5 @@
+Reattach mogelijk? detached entity passed to persist: oefening.Baas
+
+Out of memory, Eclipse >4 gb in taskmanager. Sluiten/opstarten van Eclipse geeft deze geheugen weer vrij. Hoe komt het dat dit zo ver opbouwt?
+
+@OneToOne(mappedBy="hond").
