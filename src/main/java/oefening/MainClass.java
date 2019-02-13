@@ -54,7 +54,7 @@ public class MainClass {
 		em.persist(hond1);
 		
 //		Why do i get an error when i do not persist baas?
-		em.persist(baas);
+//		em.persist(baas);
 		em.getTransaction().commit();
 		
 		em.close();

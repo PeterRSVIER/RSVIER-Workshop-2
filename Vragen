@@ -1,5 +1,14 @@
-Reattach mogelijk? detached entity passed to persist: oefening.Baas
 
-Out of memory, Eclipse >4 gb in taskmanager. Sluiten/opstarten van Eclipse geeft deze geheugen weer vrij. Hoe komt het dat dit zo ver opbouwt?
+Nieuwe commit mogelijk nadat deze eerder is gedetached? Ik krijg nu de foutmelding:
+- detached entity passed to persist: oefening.Baas
+
+Na enige tijd kan ik de applicatie niet meer draaien vanwege:
+- Out of memory, Eclipse >4 gb in taskmanager. Sluiten/opstarten van Eclipse geeft deze geheugen weer vrij. Hoe komt het dat dit zo ver opbouwt?
+
+
 
 @OneToOne(mappedBy="hond").
+
+
+Als ik baas niet persist krijg ik de volgende foutmelding. Hoe komt dit?:
+- Object references an unsaved transient instance - save the transient instance before flushing : oefening.Hond.baas -> oefening.Baas
