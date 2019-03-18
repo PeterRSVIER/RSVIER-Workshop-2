@@ -1,12 +1,12 @@
 package base;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,11 +26,13 @@ public class Account {
 	private Customer customer;
 	
 	private String email;
-	private String password;
 	
-	@ManyToOne
+	private String password;
+
+	@Enumerated(EnumType.STRING)
 	private AccountType accountType;
 	
-	private String hash;
-
+	public enum AccountType {
+		Admin, Worker, Customer
+	}
 }

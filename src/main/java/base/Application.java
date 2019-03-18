@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import base.Account.AccountType;
 import base.data.AccountRepository;
-import base.data.AccountTypeRepository;
 import base.data.CustomerRepository;
 
 @SpringBootApplication
@@ -17,6 +17,7 @@ public class Application implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("home");
+		registry.addViewController("/login").setViewName("login");
 	}
 
 	public static void main(String[] args) {
@@ -24,35 +25,22 @@ public class Application implements WebMvcConfigurer {
 	}
 
 	@Bean
-  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountTypeRepository accountTypeRepository, AccountRepository accountRepository ) {
+  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository ) {
     return new CommandLineRunner() {
       @Override
       public void run(String... args) throws Exception {
     	  
     	Customer customer = new Customer();
-  		customer.setFirstname("peter");
+  		customer.setFirstname("Peter");
   		customer.setMiddlename("de");
   		customer.setSurname("Graaf");
 	  	customerRepository.save(customer);
-	  	
-    	AccountType accountType1 = new AccountType();
-    	accountType1.setDescription("Customer");
-    		  		
-    	AccountType accountType2 = new AccountType();
-    	accountType2.setDescription("Worker");
-    		  		
-    	AccountType accountType3 = new AccountType();
-    	accountType3.setDescription("Admin");
-    		  		
-    	accountTypeRepository.save(accountType1);
-    	accountTypeRepository.save(accountType2);
-    	accountTypeRepository.save(accountType3);
  
 	    Account account = new Account();
 	  	account.setEmail("AdminAccount@email.com");
-	  	account.setHash("sha1:64000:18:IAYKe6SfpC4B7SoMryabWYhtAjMjNG9x:M1sKuTZ01MaoxTx8vOHayGc2");
+	  	account.setPassword("AdminPassword");
 	  	account.setCustomer(customer);
-	  	account.setAccountType(accountType3);
+	  	account.setAccountType(AccountType.Admin);
 	  	accountRepository.save(account);
 	  }};}
 

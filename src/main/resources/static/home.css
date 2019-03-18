@@ -1,0 +1,37 @@
+.grid-container {
+  display: grid;
+  grid-template-rows: 0.1fr 5.1fr 0.1fr;
+  grid-template-areas: "Header" "Welcome-Message" "Login-Here";
+  background-color: #660033;
+}
+
+.Header { 
+grid-area: Header; 
+}
+ 
+.Welcome-Message { 
+grid-area: Welcome-Message; 
+background-color: #440033;
+}
+
+.Login-Here { 
+grid-area: Login-Here; 
+background-color: #660033;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+  background-color: #660033;
+  
+  .container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
+}

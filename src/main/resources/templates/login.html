@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+<body>
+<div class="grid-container">
+
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  
+  </div>
+  
+  <div class="Welcome-Message"></div>
+  <h1>Welkom in Peter's Webwinkel</h1>
+  </div>
+  
+	<div class="container">
+    <form method="POST" th:object="${account}" th:action="@{/login}">
+    
+            <p><label>Name</label> 
+            <input type="text"  th:field="*{email}" </input></p>
+             
+            <p><label>Password</label>
+            <input type="text"  th:field="*{password}"</input></p>
+ <p><input class="buttonLogin" type="submit" value="Inloggen"/></p>
+ 
+ <p><div><span class="validationError" th:text="${incorrectLogin}"></span></div></p>
+ <p><div><span class="validationError" th:text="${inputAccount}"></span></div></p>
+ <p><div><span class="validationError" th:text="${returnAccount}"></span></div></p>
+ <p><div><span class="validationError" th:text="${defaultAccount}"></span></div></p>
+
+</form>
+</div>
+</body>
+</html>
+
+
+	
