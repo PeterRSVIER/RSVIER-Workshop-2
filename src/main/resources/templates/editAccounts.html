@@ -37,10 +37,10 @@
 							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.getEmail()}" /></td>
 							<td>
 								<select>
- 									<option value="admin" th:selected="${account.accountType == Admin}" >Admin</option>
-  									<option value="worker" th:selected="${account.accountType == Worker}" >Worker</option>
-  									<option value="customer" th:selected="${account.accountType == Customer}" >Customer</option>
-								</select>
+ 									<option th:name="|accounts[${accountList.index}].accountType|" value="admin" th:selected="${account.accountType == Admin}" >Admin</option>
+  									<option th:name="|accounts[${accountList.index}].accountType|" value="worker" th:selected="${account.accountType == Worker}" >Worker</option>
+  									<option th:name="|accounts[${accountList.index}].accountType|" value="customer" th:selected="${account.accountType == Customer}" >Customer</option>
+								</select> 
 							</td>	    
 						</tr>
 						</tbody>

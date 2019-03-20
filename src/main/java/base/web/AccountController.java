@@ -44,6 +44,7 @@ public class AccountController {
 			if (list.get(i) != newlist.get(i)) {
 				Account account = list.get(i);
 				account.setEmail(newlist.get(i).getEmail());
+				account.setAccountType(newlist.get(i).getAccountType());
 				list.set(i, account);
 				accountRepository.save(account);
 			}
