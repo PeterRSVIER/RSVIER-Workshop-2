@@ -40,7 +40,9 @@
                		 	<select th:name="|accounts[${accountList.index}].AccountType|">
                     		<option th:each="dropDownItem : ${accountTypeList}"
                                      th:value="${dropDownItem}"
-                                     th:text="${dropDownItem}" />
+                                     th:text="${dropDownItem}" 
+                                     th:selected="${dropDownItem == account.getAccountType()}">
+                                     />
                			 </select>
 
 							</td>	    
