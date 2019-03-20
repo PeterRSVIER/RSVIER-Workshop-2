@@ -32,12 +32,16 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr th:each="account, itemStat : ${form.accounts}">
-							<td><input th:placeholder="Id + ' ' + ${itemStat.count}" th:name="|accounts[${itemStat.index}].id|" th:value="${account.getId()}" readonly /></td>
-							<td><input th:placeholder="Email + ' ' + ${itemStat.count}" th:name="|accounts[${itemStat.index}].email|" th:value="${account.getEmail()}" /></td>
-							<td><input th:placeholder="AccountType + ' ' + ${itemStat.count}" th:name="|accounts[${itemStat.index}].accountType|" th:value="${account.getAccountType()}" /></td>
-
-						    
+						<tr th:each="account, accountList : ${form.accounts}">
+							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.getId()}" readonly /></td>
+							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.getEmail()}" /></td>
+							<td>
+								<select>
+ 									<option value="admin" th:selected="${account.accountType == Admin}" >Admin</option>
+  									<option value="worker" th:selected="${account.accountType == Worker}" >Worker</option>
+  									<option value="customer" th:selected="${account.accountType == Customer}" >Customer</option>
+								</select>
+							</td>	    
 						</tr>
 						</tbody>
 					</table>
