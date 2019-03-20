@@ -20,7 +20,7 @@
 		<div class="col-md-6">
 			<form action="#" class="form-horizontal"
 				  th:action="@{/editAccounts/save}"
-				  th:object="${form}"
+				  th:object="${accountList}"
 				  method="post">
 				<fieldset>
 					<table class="table">
@@ -32,12 +32,12 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr th:each="account, accountList : ${form.accounts}">
+						<tr th:each="account, accountList : ${accountList}">
 							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.getId()}" readonly /></td>
 							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.getEmail()}" /></td>
 							<td>
 
-               		 	<select th:field="*{accountType}">
+               		 	<select th:name="|accounts[${accountList.index}].AccountType|">
                     		<option th:each="dropDownItem : ${accountTypeList}"
                                      th:value="${dropDownItem}"
                                      th:text="${dropDownItem}" />

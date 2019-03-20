@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import base.Account;
 import base.Account.AccountType;
@@ -31,11 +30,12 @@ public class AccountController {
 
 	@GetMapping
 	public String showEditForm(Model model) {
-		List<Account> accounts = new ArrayList<>();
-		accountRepository.findAll().iterator().forEachRemaining(accounts::add);
-		model.addAttribute("form", new AccountListContainer(accounts));
-		List<AccountType> accountTypeList = new ArrayList<>(Arrays.asList(AccountType.values()));
-        model.addAttribute("accountTypeList", accountTypeList);
+		List<Account> accountList = new ArrayList<>();
+		accountRepository.findAll().iterator().forEachRemaining(accountList::add);
+		model.addAttribute(accountList);
+		List<AccountType> accountTypeList = new ArrayList<>();
+		accountTypeList = Arrays.asList(Account.AccountType.values());
+        model.addAttribute(accountTypeList);
 		return "editAccounts";
 	}
 	
