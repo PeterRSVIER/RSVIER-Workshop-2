@@ -19,7 +19,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<form action="#" class="form-horizontal"
-				  th:action="@{/editAccounts/save}"
+				  th:action="@{/account/save}"
 				  th:object="${accountList}"
 				  method="post">
 				<fieldset>
@@ -36,7 +36,6 @@
 							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.getId()}" readonly /></td>
 							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.getEmail()}" /></td>
 							<td>
-
                		 	<select th:name="|accounts[${accountList.index}].AccountType|">
                     		<option th:each="dropDownItem : ${accountTypeList}"
                                      th:value="${dropDownItem}"
@@ -44,8 +43,10 @@
                                      th:selected="${dropDownItem == account.getAccountType()}">
                                      />
                			 </select>
-
-							</td>	    
+							</td>
+							<td>
+							<a th:href="@{'account/delete/' + ${account.id}}" class="btn btn-danger">Delete</a>
+							</td>
 						</tr>
 						</tbody>
 					</table>

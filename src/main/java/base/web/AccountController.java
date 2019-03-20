@@ -3,32 +3,39 @@ package base.web;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import base.Account;
 import base.Account.AccountType;
+import base.Customer;
 import base.container.AccountListContainer;
 import base.data.AccountRepository;
+import base.data.CustomerRepository;
 
-@RequestMapping("/editAccounts")
+@RequestMapping("/account")
 @Controller
 public class AccountController {
 
 	AccountRepository accountRepository;
+	CustomerRepository customerRepository;
 
 	@Autowired
-	public AccountController(AccountRepository accountRepository) {
+	public AccountController(AccountRepository accountRepository, CustomerRepository customerRepository) {
 		this.accountRepository = accountRepository;
+		this.customerRepository = customerRepository;
 	}
 
-	@GetMapping
+	@GetMapping ()
 	public String showEditForm(Model model) {
 		List<Account> accountList = new ArrayList<>();
 		accountRepository.findAll().iterator().forEachRemaining(accountList::add);
@@ -36,8 +43,22 @@ public class AccountController {
 		List<AccountType> accountTypeList = new ArrayList<>();
 		accountTypeList = Arrays.asList(Account.AccountType.values());
         model.addAttribute(accountTypeList);
-		return "editAccounts";
+		return "account";
 	}
+
+	@GetMapping(value = "/delete/{id}")
+	public String deleteAccount(@PathVariable("id") int id, Model model) {
+		System.out.println("IdNummer = " +id);
+		Optional<Account> optionalAccount = accountRepository.findById(id);
+		Account account = optionalAccount.get();
+        model.addAttribute("account", accountRepository.findById(id));
+		
+		account.getCustomer().setAccount(null);
+        System.out.println(account);
+		accountRepository.delete(account);
+        return("redirect:/medewerkers");
+	}
+
 	
 	// Is het mogelijk om 1 element uit een object op te slaan, dus zonder een heel nieuw account aan te maken?
 	@PostMapping(value = "/save")
