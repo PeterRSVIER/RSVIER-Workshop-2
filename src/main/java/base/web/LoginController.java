@@ -45,12 +45,12 @@ public class LoginController {
 			if (accountFromDB.getAccountType() == AccountType.Worker
 					|| accountFromDB.getAccountType() == AccountType.Admin) {
 				model.addAttribute("account", accountFromDB);
-				return "redirect:/medewerkers"; // Naar medewerker pagina
+				return "/medewerkers"; // Naar medewerker pagina
 			}
 
 			if (accountFromDB.getAccountType() == AccountType.Customer) {
 				model.addAttribute("account", accountFromDB);
-				return "redirect:/klanten"; // naar klanten
+				return "/klanten"; // naar klanten
 			}
 		}
 
@@ -71,8 +71,8 @@ public class LoginController {
 		
 // 		Read By ID geeft hier ook een nullpointer terug
 		
-///		String defaultAccount = "Default Account =" + accountRepository.findById(1).toString();
-///		model.addAttribute("defaultAccount", defaultAccount);
+		String defaultAccount = "Default Account =" + accountRepository.findById(1).toString();
+		model.addAttribute("defaultAccount", defaultAccount);
 		return "login";
 
 	}

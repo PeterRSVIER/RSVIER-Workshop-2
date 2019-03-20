@@ -1,6 +1,6 @@
 .grid-container {
   display: grid;
-  grid-template-rows: 0.1fr 5.1fr 0.1fr;
+  grid-template-rows: 0.3fr 2.5fr 0.1fr;
   grid-template-areas: "Header" "Welcome-Message" "Login-Here";
   background-color: #660033;
 }

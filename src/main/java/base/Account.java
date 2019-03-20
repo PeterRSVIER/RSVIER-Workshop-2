@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name = "account")
@@ -22,6 +23,7 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@ToString.Exclude
 	@OneToOne
 	private Customer customer;
 	

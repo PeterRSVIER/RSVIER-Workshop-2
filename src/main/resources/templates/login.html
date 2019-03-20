@@ -15,16 +15,13 @@
   <div class="Welcome-Message"></div>
   <h1>Welkom in Peter's Webwinkel</h1>
   </div>
-  
-	<div class="container">
+
     <form method="POST" th:object="${account}" th:action="@{/login}">
     
-            <p><label>Name</label> 
-            <input type="text"  th:field="*{email}" </input></p>
-             
-            <p><label>Password</label>
-            <input type="text"  th:field="*{password}"</input></p>
- <p><input class="buttonLogin" type="submit" value="Inloggen"/></p>
+            <p><label>Email: </label> <input type="text"  th:field="*{email}" </input></p>
+            <p><label>Password: </label><input type="text"  th:field="*{password}"</input></p>
+            
+ 			<p><input class="buttonLogin" type="submit" value="Inloggen"/></p>
  
  <p><div><span class="validationError" th:text="${incorrectLogin}"></span></div></p>
  <p><div><span class="validationError" th:text="${inputAccount}"></span></div></p>

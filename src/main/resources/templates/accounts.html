@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+<body>
+
+<div class="grid-container">
+
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  
+  <div class="Welcome-Message"></div>
+  <h1>Welkom in Peter's Webwinkel</h1>
+  </div>
+	<nav>
+	<ul>
+		<li><a th:href="@{/}">View all Accounts</a></li>
+		<li><a th:href="@{/login}" id="login">Create New Account</a></li>
+		<li><a th:href="@{/editAccounts}" id="editAccounts">Change Email of Account</a></li>
+		<li><a th:href="@{/login}" id="login">Change Password of Account</a></li>
+		<li><a th:href="@{/login}" id="login">Delete Account</a></li>
+		<li><a th:href="@{/medewerkers}" id="login">Back</a></li>
+
+	</ul>
+
+	</nav>
+</div>
+</body>
+</html>

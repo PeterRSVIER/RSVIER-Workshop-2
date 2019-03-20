@@ -35,13 +35,27 @@ public class Application implements WebMvcConfigurer {
   		customer.setMiddlename("de");
   		customer.setSurname("Graaf");
 	  	customerRepository.save(customer);
+	  	
+    	Customer customer2 = new Customer();
+  		customer.setFirstname("Mathijs");
+  		customer.setMiddlename("de");
+  		customer.setSurname("Graaf");
+	  	customerRepository.save(customer2);
  
 	    Account account = new Account();
 	  	account.setEmail("AdminAccount@email.com");
 	  	account.setPassword("AdminPassword");
 	  	account.setCustomer(customer);
 	  	account.setAccountType(AccountType.Admin);
+	  	
+	    Account account2 = new Account();
+	  	account2.setEmail("CustomerAccount@email.com");
+	  	account2.setPassword("CustomerPassword");
+	  	account2.setCustomer(customer2);
+	  	account2.setAccountType(AccountType.Customer);
+	  	
 	  	accountRepository.save(account);
+	  	accountRepository.save(account2);
 	  }};}
 
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+<body>
+
+<div class="grid-container">
+
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  
+  <div class="Welcome-Message"></div>
+  <h1>Welkom in Peter's Webwinkel</h1>
+
+	<div class="row">
+		<div class="col-md-6">
+			<form action="#" class="form-horizontal"
+				  th:action="@{/editAccounts/save}"
+				  th:object="${form}"
+				  method="post">
+				<fieldset>
+					<table class="table">
+						<thead>
+						<tr>
+							<th>Id</th>
+							<th>Email</th>
+							<th>AccountType</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr th:each="account, itemStat : ${form.accounts}">
+							<td><input th:placeholder="Id + ' ' + ${itemStat.count}" th:name="|accounts[${itemStat.index}].id|" th:value="${account.getId()}" readonly /></td>
+							<td><input th:placeholder="Email + ' ' + ${itemStat.count}" th:name="|accounts[${itemStat.index}].email|" th:value="${account.getEmail()}" /></td>
+							<td><input th:placeholder="AccountType + ' ' + ${itemStat.count}" th:name="|accounts[${itemStat.index}].accountType|" th:value="${account.getAccountType()}" /></td>
+
+						    
+						</tr>
+						</tbody>
+					</table>
+							<span class="pull-right">
+						    <input type="submit" id="submitButton" th:value="Save">
+						    <input type="reset" id="resetButton" th:value="Reset"/>
+					</span>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

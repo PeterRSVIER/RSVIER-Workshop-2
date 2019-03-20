@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+<body>
+
+<div class="grid-container">
+
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  
+	<nav>
+	<ul>
+		<li><a th:href="@{/editAccounts}">Account Management</a></li>
+		<li><a th:href="@{/orders}" id="login">Orders</a></li>
+		<li><a th:href="@{/products}" id="login">Products</a></li>
+		<li><a th:href="@{/customers}" id="login">Customers</a></li>
+		<li><a th:href="@{/logout}" id="login">Logout</a></li>
+	</ul>
+
+	</nav>
+</body>
+</html>
