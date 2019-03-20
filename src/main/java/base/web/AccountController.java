@@ -1,6 +1,7 @@
 package base.web;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import base.Account;
+import base.Account.AccountType;
 import base.container.AccountListContainer;
 import base.data.AccountRepository;
 
@@ -32,6 +34,8 @@ public class AccountController {
 		List<Account> accounts = new ArrayList<>();
 		accountRepository.findAll().iterator().forEachRemaining(accounts::add);
 		model.addAttribute("form", new AccountListContainer(accounts));
+		List<AccountType> accountTypeList = new ArrayList<>(Arrays.asList(AccountType.values()));
+        model.addAttribute("accountTypeList", accountTypeList);
 		return "editAccounts";
 	}
 	

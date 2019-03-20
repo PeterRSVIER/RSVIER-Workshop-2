@@ -36,11 +36,13 @@
 							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.getId()}" readonly /></td>
 							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.getEmail()}" /></td>
 							<td>
-								<select>
- 									<option th:name="|accounts[${accountList.index}].accountType|" value="admin" th:selected="${account.accountType == Admin}" >Admin</option>
-  									<option th:name="|accounts[${accountList.index}].accountType|" value="worker" th:selected="${account.accountType == Worker}" >Worker</option>
-  									<option th:name="|accounts[${accountList.index}].accountType|" value="customer" th:selected="${account.accountType == Customer}" >Customer</option>
-								</select> 
+
+               		 	<select th:field="*{accountType}">
+                    		<option th:each="dropDownItem : ${accountTypeList}"
+                                     th:value="${dropDownItem}"
+                                     th:text="${dropDownItem}" />
+               			 </select>
+
 							</td>	    
 						</tr>
 						</tbody>
