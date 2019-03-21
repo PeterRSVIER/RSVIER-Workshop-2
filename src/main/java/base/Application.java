@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -17,7 +18,7 @@ public class Application implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("home");
-		registry.addViewController("/login").setViewName("login");
+		registry.addViewController("/medewerkers").setViewName("medewerkers");
 	}
 
 	public static void main(String[] args) {
@@ -37,10 +38,16 @@ public class Application implements WebMvcConfigurer {
 	  	customerRepository.save(customer);
 	  	
     	Customer customer2 = new Customer();
-  		customer.setFirstname("Mathijs");
-  		customer.setMiddlename("de");
-  		customer.setSurname("Graaf");
+  		customer2.setFirstname("Mathijs");
+  		customer2.setMiddlename("de");
+  		customer2.setSurname("Graaf");
 	  	customerRepository.save(customer2);
+	  	
+    	Customer customer3 = new Customer();
+  		customer3.setFirstname("Tom");
+  		customer3.setMiddlename("de");
+  		customer3.setSurname("Vos");
+	  	customerRepository.save(customer3);
  
 	    Account account = new Account();
 	  	account.setEmail("AdminAccount@email.com");

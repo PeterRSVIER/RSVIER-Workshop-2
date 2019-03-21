@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+<body>
+
+<div class="grid-container">
+
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  
+  <form method="POST" th:action="@{/account/create}" th:object="${account}">
+        <div class="formfields">
+            </div>
+            <label> Account naam</label> 
+                <input type="text" th:field="*{email}"  
+            ><br/>
+            <label> Wachtwoord</label> 
+                <input type="password" th:field="*{password}"  
+             ><br/> 
+            <br/>
+                <label>Account type</label>
+                <select th:field="*{accountType}">
+                    <option th:each="dropDownItem : ${accountTypeList}"
+                                     th:value="${dropDownItem}"
+                                     th:text="${dropDownItem}" />
+              </select>
+            <br/>
+            <label>Customer</label>
+                <select th:field="*{customer}">
+                    <option th:each="dropDownItem : ${customerList}"
+                                     th:value="${dropDownItem}"
+                                     th:text="${dropDownItem.getFirstname() + dropDownItem.getMiddlename() + dropDownItem.getSurname()}" />
+              </select>
+            <br/>
+        </div>
+        <input class="button" type="submit" value="Toevoegen" />
+      
+      </form>
+    </div>
+  </body>
+</html>
+</body>
+</html>

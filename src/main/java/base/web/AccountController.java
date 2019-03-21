@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,40 +28,75 @@ import base.data.CustomerRepository;
 public class AccountController {
 
 	AccountRepository accountRepository;
-	CustomerRepository customerRepository;
+	CustomerController customerController;
 
 	@Autowired
-	public AccountController(AccountRepository accountRepository, CustomerRepository customerRepository) {
+	public AccountController(AccountRepository accountRepository, CustomerController customerController) {
 		this.accountRepository = accountRepository;
-		this.customerRepository = customerRepository;
+		this.customerController = customerController;
 	}
 
-	@GetMapping ()
-	public String showEditForm(Model model) {
-		List<Account> accountList = new ArrayList<>();
-		accountRepository.findAll().iterator().forEachRemaining(accountList::add);
-		model.addAttribute(accountList);
+	@ModelAttribute (name = "accountList")
+	public List<Account> accountList(){
+	List<Account> accountList = new ArrayList<>();
+	accountRepository.findAll().iterator().forEachRemaining(accountList::add);
+	return accountList;
+	}
+	
+	@ModelAttribute (name = "account")
+	public Account account() {
+		return new Account();
+	}
+	
+	@ModelAttribute (name = "accountTypeList")
+	public List<AccountType> accountTypeList() {
 		List<AccountType> accountTypeList = new ArrayList<>();
 		accountTypeList = Arrays.asList(Account.AccountType.values());
-        model.addAttribute(accountTypeList);
+		return accountTypeList;
+	}
+	
+	@ModelAttribute (name = "customerList")
+	public List<Customer> customerList(){
+	List<Customer> customerList = customerController.customerList();
+	return customerList;
+	}
+	
+	@ModelAttribute (name = "customer")
+	public Customer customer() {
+	return new Customer();
+	}
+	
+	@GetMapping()
+	public String showEditForm(Model model) {
 		return "account";
+	}
+	
+	@GetMapping(value = "/create")
+	public String createAccountForm(Model model) {
+		return "createAccount";
+	}
+
+	@PostMapping(value = "/create")
+	public String createAccount(Account account, Model model) {
+		try {
+			accountRepository.save(account);
+		} catch (DataIntegrityViolationException e) {
+			return "/createError";
+		}
+		return ("redirect:/medewerkers");
+
 	}
 
 	@GetMapping(value = "/delete/{id}")
 	public String deleteAccount(@PathVariable("id") int id, Model model) {
-		System.out.println("IdNummer = " +id);
 		Optional<Account> optionalAccount = accountRepository.findById(id);
 		Account account = optionalAccount.get();
-        model.addAttribute("account", accountRepository.findById(id));
-		
 		account.getCustomer().setAccount(null);
-        System.out.println(account);
+		// Try block?
 		accountRepository.delete(account);
-        return("redirect:/medewerkers");
+		return ("redirect:/medewerkers");
 	}
 
-	
-	// Is het mogelijk om 1 element uit een object op te slaan, dus zonder een heel nieuw account aan te maken?
 	@PostMapping(value = "/save")
 	public String saveAccounts(@ModelAttribute AccountListContainer form, Model model) {
 		List<Account> list = (List<Account>) accountRepository.findAll();
@@ -77,7 +113,6 @@ public class AccountController {
 		return "medewerkers";
 	}
 
-	
 	/*
 	 * @RequestMapping(value = "/editAccounts", method = RequestMethod.GET) public
 	 * String getAccounts(Model model) throws Exception { List<Account> accounts =
@@ -85,7 +120,7 @@ public class AccountController {
 	 * AccountListContainer(); accountList.setAccounts(accounts);
 	 * model.addAttribute("accounts", accountList); return "editAccounts"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/editAccounts", method = RequestMethod.GET) public
 	 * String getAccounts(Model model) throws Exception {
