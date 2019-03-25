@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import base.Customer;
 import base.Order;
-import base.OrderLine;
 import base.data.OrderLineRepository;
 import base.data.OrderRepository;
 
@@ -29,6 +28,7 @@ OrderLineRepository orderLineRepository;
 OrderController (CustomerController customerController, OrderRepository orderRepository, OrderLineRepository orderLineRepository){
 	this.customerController = customerController;
 	this.orderRepository = orderRepository;
+	this.orderLineRepository = orderLineRepository;
 }
 	
 @ModelAttribute
@@ -97,14 +97,6 @@ public String deleteOrder(@PathVariable("id") int id, Model model) {
 
 @PostMapping(value = "delete")
 public String confirmDeleteOrder(Order order, Model model) {
-	System.out.println("order = " + order);
-	int id = order.getId();
-	try {
-	System.out.println("FindAllByOrder = " + orderLineRepository.findAllByOrderId(id));
-	}
-	catch (Exception e) {
-		System.out.println("Error in findAllOrderLiesOfOrder(id)");
-	}
 	try {
 	orderLineRepository.deleteAll(orderLineRepository.findAllByOrderId(order.getId()));
 	orderRepository.delete(order);
@@ -112,7 +104,7 @@ public String confirmDeleteOrder(Order order, Model model) {
 	catch(DataIntegrityViolationException  e) {
 		order = orderRepository.findById(order.getId()).get();
 		model.addAttribute("orderToDelete", order);
-		model.addAttribute("deleteOrderError", new String("Cannot delete this order. Delete the OrderLines of this order and try again."));
+		model.addAttribute("deleteOrderError", new String("Error: Cannot delete this order.)"));
 		return ("order/deleteOrder");
 	}
 	return ("redirect:/medewerkers");

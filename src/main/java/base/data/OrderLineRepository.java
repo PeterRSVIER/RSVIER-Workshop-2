@@ -10,6 +10,6 @@ import base.OrderLine;
 public interface OrderLineRepository extends CrudRepository<OrderLine, Integer>{
 
 	
-	@Query("SELECT o FROM OrderLine o WHERE o.order_id = ?1")
+	@Query("SELECT o FROM OrderLine o WHERE o.order.id = ?1")
 	public List<OrderLine> findAllByOrderId(int id);
 }
