@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<body>
+<div class="grid-container">
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  <table>
+  		<thead>
+  			<th>Firstname</th>
+  			<th>Middlename</th>
+  			<th>Surname</th>
+  		</thead>
+  		
+  		<tbody>
+  			<tr th:each="customer:${customerList}">
+            	<td th:text="${customer.firstname}"></td>
+            	<td th:text="${customer.middlename}"></td>
+            	<td th:text="${customer.surname}"></td>
+
+  				<td> 
+  					<a th:href="@{'/customer/update/' + ${customer.id}}">
+  						<input type="submit" value="Update"/>
+  					</a>
+            	</td>
+           	 	<td> 	
+            		<a th:href="@{'/customer/delete/' + ${customer.id}}">
+            			<input type="submit" value="Delete"/>
+            		</a>
+            	</td>
+  			</tr>
+  		</tbody>
+  </table>
+  				<a class="button center" th:href="@{medewerkers}">Terug</a>
+    			<a th:href="@{'/customer/create/'}">
+    				<input type="submit" value="Create new Customer">
+    			</a>
+    			<p><div><span class="validationError" th:text="${deleteCustomerError}"></span></div></p>
+  </body>
+  </html>

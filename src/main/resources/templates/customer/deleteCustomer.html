@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<body>
+<div class="grid-container">
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  <h1> Confirm delete Customer </h1>
+  <form action="#" th:action="@{'/customer/delete/' + ${customerToDelete.id}}" th:object="${customerToDelete}" method="post" >
+
+  	<table >
+  		<input type="hidden" th:field="*{id}" />
+  		
+  		<thead>
+  			<tr>
+  				<td>Firstname</td>
+  				<td>Middlename</td>
+  				<td>Surname</td>
+  			</tr>
+  		</thead>
+  		
+  		<tbody>
+			<tr>              	
+            	<td th:text="*{firstname}" th:field="*{firstname}" ></td>
+            	<td th:text="*{middlename}" th:field="*{middlename}"></td>
+            	<td th:text="*{surname}" th:field="*{surname}"></td>
+  			</tr>
+  		</tbody>
+  	</table>
+  	<tr>
+  		<a class="button center" th:href="@{medewerkers}">Terug naar Hoofdmenu</a>
+  		<input type="submit" value="Confirm Deletion" >
+  	</tr>
+  	 <p><div><span class="validationError" th:text="${deleteCustomerError}"></span></div></p>
+  </form>		
+  </body>
+  </html>

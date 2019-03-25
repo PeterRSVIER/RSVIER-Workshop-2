@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<body>
+<div class="grid-container">
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  
+  <table id="products" class="table table-striped">
+  		<thead>
+  			<th>Name</th>
+  			<th>Price</th>
+  			<th>Stock</th>
+  		</thead>
+  		
+  		<tbody>
+  			<tr th:each="product:${productList}">
+            	<td th:text="${product.name}"></td>
+            	<td th:text="${product.price}"></td>
+            	<td th:text="${product.stock}"></td>
+
+  			
+  				<td> 
+  					<a th:href="@{'/product/update/' + ${product.id}}">
+  						<input type="submit" value="Update"/>
+  					</a>
+            	</td>
+           	 	<td> 	
+            		<a th:href="@{'/product/delete/' + ${product.id}}">
+            			<input type="submit" value="Delete"/>
+            		</a>
+            	</td>
+  			</tr>
+  		</tbody>
+  </table>
+    			<a th:href="@{'/product/create/'}">
+    				<input type="submit" value="Create new Product">
+    			</a>
+  </body>
+  </html>

@@ -27,25 +27,27 @@
 						<thead>
 						<tr>
 							<th>Id</th>
+							<th>Owner</th>
 							<th>Email</th>
 							<th>AccountType</th>
 						</tr>
 						</thead>
 						<tbody>
 						<tr th:each="account, accountList : ${accountList}">
-							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.getId()}" readonly /></td>
-							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.getEmail()}" /></td>
+							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.id}" readonly /></td>
+							<td><input th:name="|accounts[${accountList.index}].customer.firstname|" th:value="${account.customer.firstname}" readonly /></td>
+							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.email}" /></td>
 							<td>
                		 	<select th:name="|accounts[${accountList.index}].AccountType|">
                     		<option th:each="dropDownItem : ${accountTypeList}"
                                      th:value="${dropDownItem}"
                                      th:text="${dropDownItem}" 
-                                     th:selected="${dropDownItem == account.getAccountType()}">
+                                     th:selected="${dropDownItem == account.accountType}">
                                      />
                			 </select>
 							</td>
 							<td>
-							<a th:href="@{'account/delete/' + ${account.id}}" class="btn btn-danger">Delete</a>
+							<a th:href="@{'account/delete/' + ${account.id}}">Delete</a>
 							</td>
 						</tr>
 						</tbody>

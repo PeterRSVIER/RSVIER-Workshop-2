@@ -31,15 +31,15 @@
               </select>
             <br/>
             <label>Customer</label>
-                <select th:field="*{customer}">
-                    <option th:each="dropDownItem : ${customerList}"
-                                     th:value="${dropDownItem}"
+                <select th:field="*{customer.id}">
+                    <option th:each="dropDownItem : ${customerListWithoutAccount}"
+                                     th:value="${dropDownItem.getId()}"
                                      th:text="${dropDownItem.getFirstname() + dropDownItem.getMiddlename() + dropDownItem.getSurname()}" />
               </select>
             <br/>
         </div>
+        <a class="button center" th:href="@{medewerkers}">Terug naar Hoofdmenu</a>
         <input class="button" type="submit" value="Toevoegen" />
-      
       </form>
     </div>
   </body>

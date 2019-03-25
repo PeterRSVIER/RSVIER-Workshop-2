@@ -1,5 +1,7 @@
 package base;
 
+import java.math.BigDecimal;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import base.Account.AccountType;
 import base.data.AccountRepository;
 import base.data.CustomerRepository;
+import base.data.ProductRepository;
 
 @SpringBootApplication
 public class Application implements WebMvcConfigurer {
@@ -26,7 +29,7 @@ public class Application implements WebMvcConfigurer {
 	}
 
 	@Bean
-  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository ) {
+  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository, ProductRepository productRepository ) {
     return new CommandLineRunner() {
       @Override
       public void run(String... args) throws Exception {
@@ -42,7 +45,7 @@ public class Application implements WebMvcConfigurer {
   		customer2.setMiddlename("de");
   		customer2.setSurname("Graaf");
 	  	customerRepository.save(customer2);
-	  	
+
     	Customer customer3 = new Customer();
   		customer3.setFirstname("Tom");
   		customer3.setMiddlename("de");
@@ -63,6 +66,20 @@ public class Application implements WebMvcConfigurer {
 	  	
 	  	accountRepository.save(account);
 	  	accountRepository.save(account2);
+	  	
+	  	Product product1 = new Product();
+	  	product1.setName("ProductNaam1");
+	  	product1.setStock(10);
+	  	product1.setPrice(new BigDecimal("10.0"));
+		productRepository.save(product1);
+	  	
+	  	Product product2 = new Product();
+	  	product2.setName("ProductNaam2");
+	  	product2.setStock(20);
+	  	product2.setPrice(new BigDecimal("20.0"));
+		productRepository.save(product2);
+		
+		
 	  }};}
-
 }
+

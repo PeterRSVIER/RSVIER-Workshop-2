@@ -12,9 +12,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+@Data
 @Entity
 @Table(name = "product")
-@Data
 public class Product {
 	
 	@Id
@@ -27,12 +27,5 @@ public class Product {
 
 	@OneToOne(mappedBy="product")
 	private OrderLine orderLine;
-	
-	public Product(int id, String name, BigDecimal price, int stock) {
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.stock = stock;
-	}
 
 }

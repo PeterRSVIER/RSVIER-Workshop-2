@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,9 +28,6 @@ public class Customer {
 	private String firstname;
 	private String middlename;
 	private String surname;
-	
-	@OneToOne(cascade = {CascadeType.ALL}, mappedBy="customer")
-	private Account account;
 
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy="customer")
 	private List<Order> orderList = new ArrayList<>();

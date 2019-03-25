@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<body>
+<div class="grid-container">
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  <h1> Enter information of the new customer </h1>
+  <form action="#" th:action="@{/customer/update}" th:object="${customer}" method="post" >
+  	<table >
+  		<tr>
+  			<td>Firstname</td>
+  			<td>Middlename</td>
+  			<td>Surname</td>
+  		</tr>
+			<tr>
+            	<td> <input type="text" th:field="*{firstname}" ></td>
+            	<td> <input type="text" th:field="*{middlename}"></td>
+            	<td> <input type="text" th:field="*{surname}"></td>
+  			</tr>
+ 	 </table>
+    <tr>
+   		<a class="button center" th:href="@{medewerkers}">Terug naar Hoofdmenu</a>
+  		<input type="submit" value="Create Customer" >
+  	</tr>
+  </form>	
+  	
+  </body>
+  </html>

@@ -55,11 +55,9 @@ public class LoginController {
 		}
 
 		/// Onderstaande code print input en returned account naar browser
-		String incorrectLogin = "Het email of wachtwoord is incorrect.";
-		String inputAccount = "Ingevoerde account = " + account.toString();
 		String isNull = "Opgehaalde account = null";
-		model.addAttribute("incorrectLogin", incorrectLogin);
-		model.addAttribute("inputAccount", inputAccount);
+		model.addAttribute("incorrectLogin", new String ("Het email of wachtwoord is incorrect"));
+		model.addAttribute("inputAccount", new String ("Opgehaalde account = null" + account.toString()));
 		if (accountFromDB != null) {
 			String returnAccount = accountFromDB.toString();
 			model.addAttribute("Opgehaalde account =", returnAccount);
