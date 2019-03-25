@@ -140,22 +140,4 @@ public class AccountController {
 		}
 		return "medewerkers";
 	}
-
-	/*
-	 * @RequestMapping(value = "/editAccounts", method = RequestMethod.GET) public
-	 * String getAccounts(Model model) throws Exception { List<Account> accounts =
-	 * getListOfAccounts(); AccountListContainer accountList = new
-	 * AccountListContainer(); accountList.setAccounts(accounts);
-	 * model.addAttribute("accounts", accountList); return "editAccounts"; }
-	 */
-
-	/*
-	 * @RequestMapping(value = "/editAccounts", method = RequestMethod.GET) public
-	 * String getAccounts(Model model) throws Exception {
-	 * model.addAttribute("accounts", getListOfAccounts()); return "editAccounts"; }
-	 * 
-	 * // Dummy method for adding List of Users private List<Account>
-	 * getListOfAccounts() { List<Account> accounts = new ArrayList<>();
-	 * accountRepository.findAll().forEach(accounts::add); return accounts; }
-	 */
 }

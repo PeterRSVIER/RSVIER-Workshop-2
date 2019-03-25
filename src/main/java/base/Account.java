@@ -23,14 +23,12 @@ public class Account {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String email;
+	private String password;
 	
 	@OneToOne
 	@JoinColumn(name="customer_id", nullable=false)
 	private Customer customer;
-	
-	private String email;
-	
-	private String password;
 
 	@Enumerated(EnumType.STRING)
 	private AccountType accountType;

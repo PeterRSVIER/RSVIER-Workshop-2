@@ -24,8 +24,4 @@ public class Product {
 	private String name;
 	private int stock;
 	private BigDecimal price;
-
-	@OneToOne(mappedBy="product")
-	private OrderLine orderLine;
-
 }

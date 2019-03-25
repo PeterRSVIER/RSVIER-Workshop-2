@@ -12,7 +12,37 @@
   <img th:src="@{/images/header.png}" alt="Header" class="center"/>
   </div>
   
-  
+    <table>
+  		<thead>
+  			<th>Factuur nummer</th>
+  			<th>Datum geplaatst</th>
+  			<th>Totale kosten</th>
+  		</thead>
+  		
+  		<tbody>
+  			<tr th:each="order:${orderListOfCustomer}">
+            	<td th:text="${order.id}"></td>
+            	<td th:text="${order.date}"></td>
+            	<td th:text="${order.totalCost}"></td>
+
+  				<td> 
+  					<a th:href="@{'/customer/update/' + ${customer.id}}">
+  						<input type="submit" value="Update"/>
+  					</a>
+            	</td>
+           	 	<td> 	
+            		<a th:href="@{'/customer/delete/' + ${customer.id}}">
+            			<input type="submit" value="Delete"/>
+            		</a>
+            	</td>
+  			</tr>
+  		</tbody>
+  </table>
+  				<a th:href="@{/medewerkers}">Terug</a>
+    			<a th:href="@{'/customer/create/'}">
+    				<input type="submit" value="Create new Customer">
+    			</a>
+  </body>
   
   
 </body>

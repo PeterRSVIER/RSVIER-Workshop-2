@@ -29,7 +29,4 @@ public class Customer {
 	private String middlename;
 	private String surname;
 
-	@OneToMany(cascade = {CascadeType.ALL}, mappedBy="customer")
-	private List<Order> orderList = new ArrayList<>();
-
 }

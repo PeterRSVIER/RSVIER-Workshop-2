@@ -8,5 +8,4 @@ import base.Account;
 import base.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, Integer>{
-	
 }

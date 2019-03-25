@@ -1,6 +1,7 @@
 package base;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import base.Account.AccountType;
 import base.data.AccountRepository;
 import base.data.CustomerRepository;
+import base.data.OrderLineRepository;
+import base.data.OrderRepository;
 import base.data.ProductRepository;
 
 @SpringBootApplication
@@ -29,7 +32,7 @@ public class Application implements WebMvcConfigurer {
 	}
 
 	@Bean
-  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository, ProductRepository productRepository ) {
+  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository, ProductRepository productRepository, OrderRepository orderRepository, OrderLineRepository orderLineRepository) {
     return new CommandLineRunner() {
       @Override
       public void run(String... args) throws Exception {
@@ -79,6 +82,17 @@ public class Application implements WebMvcConfigurer {
 	  	product2.setPrice(new BigDecimal("20.0"));
 		productRepository.save(product2);
 		
+		Order order1 = new Order();
+		order1.setCustomer(customer);
+		order1.setDate(LocalDateTime.now());
+		order1.setTotalCost(new BigDecimal(100));
+		orderRepository.save(order1);
+		
+		OrderLine orderLine1 = new OrderLine();
+		orderLine1.setAmount(50);
+		orderLine1.setProduct(product1);
+		orderLine1.setOrder(order1);
+		orderLineRepository.save(orderLine1);
 		
 	  }};}
 }

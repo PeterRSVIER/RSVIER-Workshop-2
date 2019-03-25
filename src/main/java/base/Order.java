@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,14 +27,10 @@ public class Order {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@ManyToOne
-	private Customer customer;
-	
-	@OneToMany(mappedBy="order")
-	private List<OrderLine> orderLineList = new ArrayList<>();
-	
 	private BigDecimal totalCost;
 	private LocalDateTime date;
+	@ManyToOne
+	@JoinColumn(name="customer_id", nullable=false)
+	private Customer customer;
 
 }
