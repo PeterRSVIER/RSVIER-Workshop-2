@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<body>
+<div class="grid-container">
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  <h1> Enter information of the new product </h1>
+  <form action="#" th:action="@{/product/update}" th:object="${product}" method="post" >
+  	<table >
+  		<tr>
+  			<td>Name</td>
+  			<td>Price</td>
+  			<td>Stock</td>
+  		</tr>
+			<tr>
+            	<td> <input type="text" th:field="*{name}" ></td>
+            	<td> <input type="text" th:field="*{price}"></td>
+            	<td> <input type="text" th:field="*{stock}"></td>
+  			</tr>
+ 	 </table>
+    <tr>
+  		<input type="submit" value="Create Product" >
+  	</tr>
+  </form>	
+  	
+  </body>
+  </html>

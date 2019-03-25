@@ -26,12 +26,12 @@
             	<td th:text="${order.totalCost}"></td>
 
   				<td> 
-  					<a th:href="@{'/customer/update/' + ${customer.id}}">
+  					<a th:href="@{'/order/update/' + ${order.id}}">
   						<input type="submit" value="Update"/>
   					</a>
             	</td>
            	 	<td> 	
-            		<a th:href="@{'/customer/delete/' + ${customer.id}}">
+            		<a th:href="@{'/order/delete/' + ${order.id}}">
             			<input type="submit" value="Delete"/>
             		</a>
             	</td>
@@ -39,7 +39,7 @@
   		</tbody>
   </table>
   				<a th:href="@{/medewerkers}">Terug</a>
-    			<a th:href="@{'/customer/create/'}">
+    			<a th:href="@{'/order/create/'}">
     				<input type="submit" value="Create new Customer">
     			</a>
   </body>

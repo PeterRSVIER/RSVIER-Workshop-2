@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<body>
+<div class="grid-container">
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  <h1> Enter new values </h1>
+  <form action="#" th:action="@{/order/update}" th:object="${orderToUpdate}" method="post" >
+  	<table >
+
+  		<input type="hidden" th:field="*{id}" />
+  
+  		<thead>
+  			<th>Factuur nummer</th>
+  			<th>Datum geplaatst</th>
+  			<th>Totale kosten</th>
+  		</thead>	
+  		<tbody>
+			<tr>
+            	<td> <input type="text" th:field="*{id}" readonly></td>
+            	<td> <input type="text" th:field="*{date}"></td>
+            	<td> <input type="text" th:field="*{totalCost}"></td>
+  			</tr>
+  		</tbody>
+  	</table>
+    <tr>
+      	<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
+  		<input type="submit" value="Update Product" >
+  	</tr>
+  </form>		
+  </body>
+  </html>
