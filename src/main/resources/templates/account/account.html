@@ -34,11 +34,11 @@
 						</thead>
 						<tbody>
 						<tr th:each="account, accountList : ${accountList}">
-							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.id}" readonly /></td>
-							<td><input th:name="|accounts[${accountList.index}].customer.firstname|" th:value="${account.customer.firstname}" readonly /></td>
-							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.email}" /></td>
+							<td><input th:name="|account[${accountList.index}].id|" th:value="${account.id}" readonly /></td>
+							<td><input th:name="|account[${accountList.index}].customer.firstname|" th:value="${account.customer.firstname}" readonly /></td>
+							<td><input th:name="|account[${accountList.index}].email|" th:value="${account.email}" /></td>
 							<td>
-               		 	<select th:name="|accounts[${accountList.index}].AccountType|">
+               		 	<select th:name="|account[${accountList.index}].AccountType|">
                     		<option th:each="dropDownItem : ${accountTypeList}"
                                      th:value="${dropDownItem}"
                                      th:text="${dropDownItem}" 

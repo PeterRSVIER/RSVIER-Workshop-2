@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peter's Webwinkel</title>
+<link rel="stylesheet" th:href="@{/home.css}" />
+</head>
+
+<body>
+<div class="grid-container">
+  <div class="Header"></div>
+  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+  </div>
+  <h2> Current Order </h2>
+
+ 	<td> <label>Id van SelectedCustomer</label> <input type="text" th:value="${selectedCustomer.id}" /></td>
+ 	
+  <table id="orderLineList" class="table table-striped">
+  		<thead>
+  			<th>Amount</th>
+  			<th>ProductId</th>
+  			<th>Price
+  		</thead>
+  		
+  		<tbody>
+  			<tr th:each="orderLine:${orderLineList}">
+            	<td th:text="${orderLine.amount}"></td>
+            	<td th:text="${orderLine.product.id}"></td>
+            	<td th:text="${orderLine.product.price}"></td>
+            </tr>
+         </tbody>
+  </table>
+
+ 
+ <h2> Select new Order To Add </h2>
+  <form action="#" th:action="@{/order/create/addOrderLine/}" th:object="${orderLine}" method="post" >
+  	<table >
+		<tr>
+			<select th:field="*{product.id}">
+                    <option th:each="dropDownItem : ${productList}"
+                    	th:value="${dropDownItem.getId()}"
+                    	th:text="${dropDownItem.getName()}" />
+              </select>
+            	<td> <label> Amount </label><input type="text" th:field="*{amount}" ></td>
+  		</tr>
+ 	 </table>
+    <tr>
+  		<input type="submit" value="Add Product to Order" >
+  	</tr>
+  </form>	
+      <form action="#" th:action="@{/order/create/save}" th:object="${selectedCustomer}" method="post" >
+    <input type="submit" value="Submit Create Order" >
+    </form>
+    				
+    <form action="#" th:action="@{/order/create/clear}" th:object="${orderLineList}" method="post" >
+    <input type="submit" value="Clear Current Order" >
+    </form>
+    
+  </body>
+  </html>

@@ -26,12 +26,13 @@
             	<td th:text="*{id}" th:field="*{id}" ></td>
             	<td th:text="*{date}" th:field="*{date}"></td>
             	<td th:text="*{totalCost}" th:field="*{totalCost}"></td>
+            	<td> <input type="submit" value="Confirm Deletion" > </td>
   			</tr>
   		</tbody>
   	</table>
   	<tr>
   		<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
-  		<input type="submit" value="Confirm Deletion" >
+
   	</tr>
   </form>		
     	 <p><div><span class="validationError" th:text="${deleteOrderError}"></span></div></p>

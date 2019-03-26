@@ -16,7 +16,8 @@
   	<table >
 
   		<input type="hidden" th:field="*{id}" />
-  
+  		<input type="hidden" th:field="*{customer.id}" />
+  		
   		<thead>
   			<th>Factuur nummer</th>
   			<th>Datum geplaatst</th>
@@ -27,12 +28,13 @@
             	<td> <input type="text" th:field="*{id}" readonly></td>
             	<td> <input type="text" th:field="*{date}"></td>
             	<td> <input type="text" th:field="*{totalCost}"></td>
+            	<td> <input type="submit" value="Update Order" > </td>
   			</tr>
   		</tbody>
   	</table>
     <tr>
       	<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
-  		<input type="submit" value="Update Product" >
+
   	</tr>
   </form>		
   </body>
