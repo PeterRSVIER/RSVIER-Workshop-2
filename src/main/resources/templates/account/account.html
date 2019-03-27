@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Peter's Webwinkel</title>
 <link rel="stylesheet" th:href="@{/home.css}" />
 <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+
 </head>
 <body>
 
@@ -17,29 +19,30 @@
   <div class="Welcome-Message"></div>
   <h1>Welkom in Peter's Webwinkel</h1>
 
-	<div class="row">
-		<div class="col-md-6">
-			<form action="#" class="form-horizontal"
+
+			<form action="#"
 				  th:action="@{/account/save}"
 				  th:object="${accountList}"
 				  method="post">
 				<fieldset>
-					<table class="table">
-						<thead>
+					<table class="table table-hover">
+					
+						<thead  >
 						<tr>
-							<th>Id</th>
-							<th>Owner</th>
-							<th>Email</th>
-							<th>AccountType</th>
+							<th class="centered-cell">Id</th>
+							<th class="centered-cell">Owner </th>
+							<th class="centered-cell">Email</th>
+							<th class="centered-cell">AccountType</th>
 						</tr>
 						</thead>
 						<tbody>
 						<tr th:each="account, accountList : ${accountList}">
-							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.id}" readonly /></td>
-							<td><input th:name="|accounts[${accountList.index}].customer.firstname|" th:value="${account.customer.firstname}" readonly /></td>
-							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.email}" /></td>
+						
+							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.id}" readonly class="form-control no-border input-group-text" size="10" /></td>
+							<td><input th:name="|accounts[${accountList.index}].customer.firstname|" th:value="${account.customer.firstname}" class="form-control centered-cell" size="50"readonly /></td>
+							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.email}" class="form-control centered-cell" size="150"/></td>
 							<td>
-               		 	<select th:name="|accounts[${accountList.index}].AccountType|">
+               		 	<select th:name="|accounts[${accountList.index}].AccountType|" class="form-control">
                     		<option th:each="dropDownItem : ${accountTypeList}"
                                      th:value="${dropDownItem}"
                                      th:text="${dropDownItem}" 
@@ -48,15 +51,15 @@
                			 </select>
 							</td>
 							<td>
-							<a th:href="@{'account/delete/' + ${account.id}}">Delete</a>
+							<button type="button" class="btn btn-danger" th:href="@{'account/delete/' + ${account.id}} ">Delete</a>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-							<span class="pull-right">
-						    <input type="submit" id="submitButton" th:value="Save">
-						    <input type="reset" id="resetButton" th:value="Reset"/>
-					</span>
+							
+						    <input type="submit" class="btn btn-success" th:value="Save">
+						    <input type="reset" class="btn btn-info" th:value="Reset"/>
+					
 				</fieldset>
 			</form>
 			<a class="button center" th:href="@{medewerkers}">Terug</a>

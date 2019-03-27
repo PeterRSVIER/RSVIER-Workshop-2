@@ -2,18 +2,14 @@ form{ display: inline-block; }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 0.7fr 0.7fr 0.5fr;
-  grid-template-rows: 0.1fr 1.8fr 0.1;
-  grid-template-areas: "header header header" "orderLinks orderMidden orderRechts" "buttons buttons buttons";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.1fr 1.9fr;
+  grid-template-areas: "header header" "orderLinks orderRechts";
 }
-
-.orderLinks { grid-area: orderMidden; }
 
 .orderLinks { grid-area: orderLinks; }
 
 .orderRechts { grid-area: orderRechts; }
-
-.buttons { grid-area: buttons; }
 
 .header { grid-area: header; background-color: #660033; }
 

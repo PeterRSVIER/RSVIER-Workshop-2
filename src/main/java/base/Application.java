@@ -71,15 +71,15 @@ public class Application implements WebMvcConfigurer {
 	  	accountRepository.save(account2);
 	  	
 	  	Product product1 = new Product();
-	  	product1.setName("ProductNaam1");
+	  	product1.setName("Gloomhaven");
 	  	product1.setStock(10);
-	  	product1.setPrice(new BigDecimal("10.0"));
+	  	product1.setPrice(new BigDecimal("119.95"));
 		productRepository.save(product1);
 	  	
 	  	Product product2 = new Product();
-	  	product2.setName("ProductNaam2");
+	  	product2.setName("Spirit Island");
 	  	product2.setStock(20);
-	  	product2.setPrice(new BigDecimal("20.0"));
+	  	product2.setPrice(new BigDecimal("69.95"));
 		productRepository.save(product2);
 		
 		Order order1 = new Order();

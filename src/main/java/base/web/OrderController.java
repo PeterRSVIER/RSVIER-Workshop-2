@@ -178,7 +178,16 @@ public String deleteOrder(@PathVariable("id") int id, Model model) {
 @PostMapping(value = "delete")
 public String confirmDeleteOrder(Order order, Model model) {
 	try {
-	orderLineRepository.deleteAll(orderLineRepository.findAllByOrderId(order.getId()));
+		List<OrderLine> list = orderLineRepository.findAllByOrderId(order.getId());
+		for(int i = 0; i < list.size(); i++) {
+			Product product = productController.productRepository.findById(list.get(i).getProduct().getId()).get();
+			int oldStock = product.getStock();
+			int newStock = oldStock + list.get(i).getAmount();
+			product.setStock(newStock);
+			productController.productRepository.save(product);
+		}
+		
+	orderLineRepository.deleteAll(list);
 	orderRepository.delete(order);
 	}
 	catch(DataIntegrityViolationException  e) {

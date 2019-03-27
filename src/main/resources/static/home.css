@@ -5,6 +5,7 @@
   background-color: #660033;
 }
 
+
 .Header { 
 grid-area: Header; 
 }
@@ -12,6 +13,10 @@ grid-area: Header;
 .Welcome-Message { 
 grid-area: Welcome-Message; 
 
+}
+
+.centered-cell {
+text-align: center;
 }
 
 .Login-Here { 

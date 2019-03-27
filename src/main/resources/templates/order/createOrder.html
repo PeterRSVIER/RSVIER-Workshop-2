@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Peter's Webwinkel</title>
-<link rel="stylesheet" th:href="@{/order.css}" />
+<link rel="stylesheet" th:href="@{/order.css}">
 <link rel="stylesheet" th:href="@{/bootstrap.css}" />
 </head>
 
@@ -33,13 +33,13 @@
 	</div>
 
 	<div class="orderLinks">
-		<h2>Select new Order To Add</h2>
+		<h2>Select new Product To Add</h2>
+
 		<form action="#" th:action="@{/order/create/addOrderLine/}"
 			th:object="${orderLine}" method="post">
 			<table>
 				<tr>
-					<select th:field="*{product.id}" class="selectpicker" multiple title="Choose one of the following..." show-tick>
-						<optgroup label="Bordspellen">
+					<select th:field="*{product.id}" name="test" id="mySelect" onchange="myFunction()" class="selectpicker" multiple title="Choose one of the following...">>
 						<option th:each="dropDownItem : ${productList}"
 							th:value="${dropDownItem.getId()}"
 							th:text="${dropDownItem.getName()}" />
@@ -63,5 +63,24 @@
 		</form>
 		  	 <p><div><span class="validationError" th:text="${stockError}"></span></div></p>
 	</div>
+	<div class="orderMiddle">
+	<br />
+
+	<p id="demo"></p>
+	<p id="demotext"> </p>
+	</div>
+	
 </body>
+		<script>
+			function myFunction() {
+				var x = document.getElementById("mySelect").value;
+				if (x == 1) {
+					document.getElementById("demo").innerHTML = "<img src='/images/gloomhaven.jpg' class='rounded' width='320' height='160'>"
+				}
+				if (x == 2) {
+					document.getElementById("demo").innerHTML = "<img src='/images/spiritIsland.jpg' class='rounded' width='320' height='160'>"
+				}
+			}
+		</script>
 </html>
+
