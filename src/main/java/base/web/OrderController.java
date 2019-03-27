@@ -1,5 +1,7 @@
 package base.web;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,6 @@ CustomerController customerController;
 OrderRepository orderRepository;
 OrderLineRepository orderLineRepository;
 ProductController productController;
-	
 	
 OrderController (CustomerController customerController, OrderRepository orderRepository, OrderLineRepository orderLineRepository, ProductController productController){
 	this.customerController = customerController;
@@ -109,22 +110,39 @@ public String addOrderLineToList (OrderLine orderLine, @ModelAttribute("orderLin
 	return "order/createOrder";
 }
 
+// Deze methode nog opsplitsen in kleinere methodes
 @PostMapping(value = "create/save")
-public String createOrder(@ModelAttribute Customer selectedCustomer, @ModelAttribute List<OrderLine> orderLineList, Model model) {
-	System.out.println("Entering create/save");
-	System.out.println("selectedCustomer In create/save = " + selectedCustomer);
-	System.out.println("orderLineList In create/save = " + orderLineList);
+public String createOrder(@ModelAttribute("selectedCustomer") Customer selectedCustomer, @ModelAttribute List<OrderLine> orderLineList, Model model) {
+
 	Customer customer = customerController.customerRepository.findById(selectedCustomer.getId()).get();
 	Order order = new Order();
 	order.setCustomer(customer);
 	order = orderRepository.save(order);
+	BigDecimal totalCost = new BigDecimal(0);
+	List<Product> productsToUpdate = new ArrayList<>();
 	for (int i = 0; i < orderLineList.size(); i++){
 		OrderLine orderLine  = orderLineList.get(i);
 		orderLine.setOrder(order);
 		orderLineList.set(i, orderLine);
+		Product product = productController.productRepository.findById(orderLine.getProduct().getId()).get();
+		totalCost = totalCost.add(product.getPrice().multiply(new BigDecimal(orderLine.getAmount())));
+		
+		//Aparte methode van maken
+		if (product.getStock() < orderLine.getAmount()) {
+			model.addAttribute("stockError", "Not enough products in stock. Please check the current stock and retry");
+			return "order/createOrder";
+		}
+		else {
+		int currentStock = product.getStock();
+		product.setStock(currentStock - orderLine.getAmount());
+		productsToUpdate.add(product);
+		}
 	}
-	System.out.println("Saving List<OrderLine> =" + orderLineList);
+	productController.productRepository.saveAll(productsToUpdate);
 	orderLineRepository.saveAll(orderLineList);
+	order.setDate(LocalDateTime.now());
+	order.setTotalCost(totalCost);
+	order = orderRepository.save(order);
 	return ("redirect:/medewerkers");
 }
 

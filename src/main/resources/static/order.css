@@ -1,0 +1,27 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.1fr 1.9fr;
+  grid-template-areas: "header header" "orderLinks orderRechts";
+}
+
+.orderLinks { grid-area: orderLinks; }
+
+.orderRechts { grid-area: orderRechts; }
+
+.header { grid-area: header; background-color: #660033; }
+
+.center {
+  margin-left: 5%;
+  margin-right: auto;
+  width: 10%;
+  
+  .container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
