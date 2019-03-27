@@ -38,7 +38,8 @@
 			th:object="${orderLine}" method="post">
 			<table>
 				<tr>
-					<select class="selectpicker" th:field="*{product.id}">
+					<select th:field="*{product.id}" class="selectpicker" multiple title="Choose one of the following..." show-tick>
+						<optgroup label="Bordspellen">
 						<option th:each="dropDownItem : ${productList}"
 							th:value="${dropDownItem.getId()}"
 							th:text="${dropDownItem.getName()}" />

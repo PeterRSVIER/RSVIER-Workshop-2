@@ -126,14 +126,17 @@ public class AccountController {
 	}
 
 	@PostMapping(value = "/save")
-	public String saveAccounts(@ModelAttribute AccountListContainer form, Model model) {
+	// AccountListContainer hier evt. nog wegwerken, krijg hem niet aan de praat met List<Account>
+	public String saveAccounts(AccountListContainer accountListContainer, Model model) {
 		List<Account> list = (List<Account>) accountRepository.findAll();
-		List<Account> newlist = form.getAccounts();
+		List<Account> newList = accountListContainer.getAccounts();
+		System.out.println("oldList = " + list);
+		System.out.println("newList = " + newList);
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i) != newlist.get(i)) {
+			if (list.get(i) != newList.get(i)) {
 				Account account = list.get(i);
-				account.setEmail(newlist.get(i).getEmail());
-				account.setAccountType(newlist.get(i).getAccountType());
+				account.setEmail(newList.get(i).getEmail());
+				account.setAccountType(newList.get(i).getAccountType());
 				list.set(i, account);
 				accountRepository.save(account);
 			}

@@ -130,6 +130,7 @@ public String createOrder(@ModelAttribute("selectedCustomer") Customer selectedC
 		//Aparte methode van maken
 		if (product.getStock() < orderLine.getAmount()) {
 			model.addAttribute("stockError", "Not enough products in stock. Please check the current stock and retry");
+			orderRepository.delete(order);
 			return "order/createOrder";
 		}
 		else {
