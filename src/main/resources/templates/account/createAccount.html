@@ -8,50 +8,46 @@
 </head>
 <body>
 
-<div class="grid-container">
+	<div class="grid-container">
 
-  <div class="Header"></div>
-  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
-    	<nav >
-	<ul class="nav nav-pills nav-fill bg-header-purple">
-		<li class="nav-item"><a th:href="@{/account}" class="nav-link active">Account Management</a></li>
-		<li class="nav-item"><a th:href="@{/order}" class="nav-link active">Orders</a></li>
-		<li class="nav-item"><a th:href="@{/product}" class="nav-link active">Products</a></li>
-		<li class="nav-item"><a th:href="@{/customer}" class="nav-link active">Customers</a></li>
-		<li class="nav-item"><a th:href="@{/logout}" class="nav-link active">Logout</a></li>
-	</ul>
-	</nav>
-  </div>
-  
-  <form method="POST" th:action="@{/account/create}" th:object="${account}">
-        <div class="formfields">
-            <label> Account naam</label> 
-                <input type="text" th:field="*{email}"  
-            ><br/>
-            <label> Wachtwoord</label> 
-                <input type="password" th:field="*{password}"  
-             ><br/> 
-            <br/>
-                <label>Account type</label>
-                <select th:field="*{accountType}">
-                    <option th:each="dropDownItem : ${accountTypeList}"
-                                     th:value="${dropDownItem}"
-                                     th:text="${dropDownItem}" />
-              </select>
-            <br/>
-            <label>Customer</label>
-                <select th:field="*{customer.id}">
-                    <option th:each="dropDownItem : ${customerListWithoutAccount}"
-                                     th:value="${dropDownItem.getId()}"
-                                     th:text="${dropDownItem.getFirstname() + dropDownItem.getMiddlename() + dropDownItem.getSurname()}" />
-              </select>
-            <br/>
-        </div>
-        <a class="button center" th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
-        <input class="button" type="submit" value="Toevoegen" />
-      </form>
-    </div>
-  </body>
+		<div class="Header"></div>
+		<img th:src="@{/images/header.png}" alt="Header" class="center" />
+		<nav>
+			<ul class="nav nav-pills nav-fill bg-header-purple">
+				<li class="nav-item"><a th:href="@{/account}"
+					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
+				<li class="nav-item"><a th:href="@{/order}"
+					class="nav-link active">Orders</a></li>
+				<li class="nav-item"><a th:href="@{/product}"
+					class="nav-link active">Products</a></li>
+				<li class="nav-item"><a th:href="@{/logout}"
+					class="nav-link active">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<form method="POST" th:action="@{/account/create}"
+		th:object="${account}">
+		<div class="formfields">
+			<label> Account naam</label> <input type="text" th:field="*{email}"><br />
+			<label> Wachtwoord</label> <input type="password"
+				th:field="*{password}"><br /> <br /> <label>Account
+				type</label> <select th:field="*{accountType}">
+				<option th:each="dropDownItem : ${accountTypeList}"
+					th:value="${dropDownItem}" th:text="${dropDownItem}" />
+			</select> <br /> <label>Customer</label> <select th:field="*{customer.id}">
+				<option th:each="dropDownItem : ${customerListWithoutAccount}"
+					th:value="${dropDownItem.getId()}"
+					th:text="${dropDownItem.getFirstname() + dropDownItem.getMiddlename() + dropDownItem.getSurname()}" />
+			</select> <br />
+		</div>
+		<a class="button center" th:href="@{/medewerkers}">Terug naar
+			Hoofdmenu</a> <input class="button" type="submit" value="Toevoegen" />
+	</form>
+	</div>
+</body>
 </html>
 </body>
 </html>

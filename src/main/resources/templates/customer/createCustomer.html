@@ -15,42 +15,45 @@
 			<ul class="nav nav-pills nav-fill bg-header-purple">
 				<li class="nav-item"><a th:href="@{/account}"
 					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
 				<li class="nav-item"><a th:href="@{/order}"
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/customer}"
-					class="nav-link active">Customers</a></li>
 				<li class="nav-item"><a th:href="@{/logout}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
 	</div>
 	<div class="m-3">
-	<form action="#" th:action="@{/customer/update}"
-		th:object="${customer}" method="post">
-		<table class="table w-50">
-			<thead>
-				<tr>
-					<th width="10%" class="centered-cell">Firstname</th>
-					<th width="10%" class="centered-cell">Middlename</th>
-					<th width="10%" class="centered-cell">Surname</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><input type="text" th:field="*{firstname}" class="form-control centered-cell"></td>
-					<td><input type="text" th:field="*{middlename}" class="form-control centered-cell"></td>
-					<td><input type="text" th:field="*{surname}" class="form-control centered-cell"></td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="m-2">
-			<a th:href="@{/customer}" class="btn btn-dark">Back</a>
-			<input type="submit" value="Create Customer" class="btn btn-success">
-		
-		</div>
-	</form>
-</div>
+		<form action="#" th:action="@{/customer/update}"
+			th:object="${customer}" method="post">
+			<table class="table w-50">
+				<thead>
+					<tr>
+						<th width="10%" class="centered-cell">Firstname</th>
+						<th width="10%" class="centered-cell">Middlename</th>
+						<th width="10%" class="centered-cell">Surname</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" th:field="*{firstname}"
+							class="form-control centered-cell"></td>
+						<td><input type="text" th:field="*{middlename}"
+							class="form-control centered-cell"></td>
+						<td><input type="text" th:field="*{surname}"
+							class="form-control centered-cell"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="m-2">
+				<a th:href="@{/customer}" class="btn btn-dark">Back</a> <input
+					type="submit" value="Create Customer" class="btn btn-success">
+
+			</div>
+		</form>
+	</div>
 </body>
 </html>

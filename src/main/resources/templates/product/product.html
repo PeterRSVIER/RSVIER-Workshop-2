@@ -15,12 +15,12 @@
 			<ul class="nav nav-pills nav-fill bg-header-purple">
 				<li class="nav-item"><a th:href="@{/account}"
 					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
 				<li class="nav-item"><a th:href="@{/order}"
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/customer}"
-					class="nav-link active">Customers</a></li>
 				<li class="nav-item"><a th:href="@{/logout}"
 					class="nav-link active">Logout</a></li>
 			</ul>
@@ -43,12 +43,10 @@
 					<td th:text="${product.stock}"></td>
 
 
-					<td><a
-						th:href="@{'/product/update/' + ${product.id}}"> <input
+					<td><a th:href="@{'/product/update/' + ${product.id}}"> <input
 							type="submit" class="btn btn-success" th:value="Update" />
 					</a></td>
-					<td><a
-						th:href="@{'/product/delete/' + ${product.id}}"> <input
+					<td><a th:href="@{'/product/delete/' + ${product.id}}"> <input
 							type="submit" class="btn btn-danger" value="Delete" />
 					</a></td>
 				</tr>

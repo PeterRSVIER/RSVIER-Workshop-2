@@ -11,49 +11,57 @@
 	<div class="grid-container">
 		<div class="Header"></div>
 		<img th:src="@{/images/header.png}" alt="Header" class="center" />
-		  	<nav >
-	<ul class="nav nav-pills nav-fill bg-header-purple">
-		<li class="nav-item"><a th:href="@{/account}" class="nav-link active">Account Management</a></li>
-		<li class="nav-item"><a th:href="@{/order}" class="nav-link active">Orders</a></li>
-		<li class="nav-item"><a th:href="@{/product}" class="nav-link active">Products</a></li>
-		<li class="nav-item"><a th:href="@{/customer}" class="nav-link active">Customers</a></li>
-		<li class="nav-item"><a th:href="@{/logout}" class="nav-link active">Logout</a></li>
-	</ul>
-	</nav>
+		<nav>
+			<ul class="nav nav-pills nav-fill bg-header-purple">
+				<li class="nav-item"><a th:href="@{/account}"
+					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
+				<li class="nav-item"><a th:href="@{/order}"
+					class="nav-link active">Orders</a></li>
+				<li class="nav-item"><a th:href="@{/product}"
+					class="nav-link active">Products</a></li>
+				<li class="nav-item"><a th:href="@{/logout}"
+					class="nav-link active">Logout</a></li>
+			</ul>
+		</nav>
 	</div>
-	
-	
 
-	
 	<div class="m-3">
-	<div class="input-group">
-	<form action="#" th:action="@{/customer/update}"
-		th:object="${customerToUpdate}" method="post">
-		<table class="table table-hover">
+		<div class="input-group">
+			<form action="#" th:action="@{/customer/update}"
+				th:object="${customerToUpdate}" method="post">
+				<table class="table table-hover">
 
-			<input type="hidden" th:field="*{id}" />
+					<input type="hidden" th:field="*{id}" />
 
-			<thead>
-			<tr>
-				<th>Firstname</th>
-				<th>Middlename</th>
-				<th>Surname</th>
+					<thead>
+						<tr>
+							<th>Firstname</th>
+							<th>Middlename</th>
+							<th>Surname</th>
+						</tr>
+					</thead>
+					<tr>
+						<td><input type="text" th:field="*{firstname}"
+							class="form-control" placeholder="Username" aria-label="Username"
+							aria-describedby="basic-addon1"></td>
+						<td><input type="text" th:field="*{middlename}"
+							class="form-control" placeholder="Username" aria-label="Username"
+							aria-describedby="basic-addon1"></td>
+						<td><input type="text" th:field="*{surname}"
+							class="form-control"></td>
+						<td><input type="submit" value="Update customer"
+							class="btn btn-success"></td>
+
+
+					</tr>
+				</table>
+				<tr>
+					<a th:href="@{/customer}" class="btn btn-secondary">Back</a>
 				</tr>
-			</thead>
-			<tr>
-				<td><input type="text" th:field="*{firstname}" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></td>
-				<td><input type="text" th:field="*{middlename}" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></td>
-				<td><input type="text" th:field="*{surname}" class="form-control" ></td>
-				<td><input type="submit" value="Update customer" class="btn btn-success"></td>
-
-				
-			</tr>
-		</table>
-		<tr>
-			<a th:href="@{/customer}" class="btn btn-secondary">Back</a>
-		</tr>
-	</form>
-	</div>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

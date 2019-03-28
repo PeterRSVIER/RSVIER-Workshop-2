@@ -8,43 +8,53 @@
 </head>
 
 <body>
-<div class="grid-container">
-  <div class="Header"></div>
-  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
-    	<nav >
-	<ul class="nav nav-pills nav-fill bg-header-purple">
-		<li class="nav-item"><a th:href="@{/account}" class="nav-link active">Account Management</a></li>
-		<li class="nav-item"><a th:href="@{/order}" class="nav-link active">Orders</a></li>
-		<li class="nav-item"><a th:href="@{/product}" class="nav-link active">Products</a></li>
-		<li class="nav-item"><a th:href="@{/customer}" class="nav-link active">Customers</a></li>
-		<li class="nav-item"><a th:href="@{/logout}" class="nav-link active">Logout</a></li>
-	</ul>
-	</nav>
-  </div>
-  <h1> Confirm delete Order </h1>
-  <form action="#" th:action="@{/order/delete}" th:object="${orderToDelete}" method="post" >
-  	<table >
-  		<input type="hidden" th:field="*{id}" />
-  		
-  		<thead>
-  			<th>Factuur nummer</th>
-  			<th>Datum geplaatst</th>
-  			<th>Totale kosten</th>
-  		</thead>	
-  		<tbody>
-			<tr>              	
-            	<td th:text="*{id}" th:field="*{id}" ></td>
-            	<td th:text="*{date}" th:field="*{date}"></td>
-            	<td th:text="*{totalCost}" th:field="*{totalCost}"></td>
-            	<td> <input type="submit" value="Confirm Deletion" > </td>
-  			</tr>
-  		</tbody>
-  	</table>
-  	<tr>
-  		<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
+	<div class="grid-container">
+		<div class="Header"></div>
+		<img th:src="@{/images/header.png}" alt="Header" class="center" />
+		<nav>
+			<ul class="nav nav-pills nav-fill bg-header-purple">
+				<li class="nav-item"><a th:href="@{/account}"
+					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
+				<li class="nav-item"><a th:href="@{/order}"
+					class="nav-link active">Orders</a></li>
+				<li class="nav-item"><a th:href="@{/product}"
+					class="nav-link active">Products</a></li>
+				<li class="nav-item"><a th:href="@{/logout}"
+					class="nav-link active">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+	<h1>Confirm delete Order</h1>
+	<form action="#" th:action="@{/order/delete}"
+		th:object="${orderToDelete}" method="post">
+		<table>
+			<input type="hidden" th:field="*{id}" />
 
-  	</tr>
-  </form>		
-    	 <p><div><span class="validationError" th:text="${deleteOrderError}"></span></div></p>
-  </body>
-  </html>
+			<thead>
+				<th>Factuur nummer</th>
+				<th>Datum geplaatst</th>
+				<th>Totale kosten</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="*{id}" th:field="*{id}"></td>
+					<td th:text="*{date}" th:field="*{date}"></td>
+					<td th:text="*{totalCost}" th:field="*{totalCost}"></td>
+					<td><input type="submit" value="Confirm Deletion"></td>
+				</tr>
+			</tbody>
+		</table>
+		<tr>
+			<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
+
+		</tr>
+	</form>
+	<p>
+	<div>
+		<span class="validationError" th:text="${deleteOrderError}"></span>
+	</div>
+	</p>
+</body>
+</html>

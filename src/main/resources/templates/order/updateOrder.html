@@ -8,44 +8,50 @@
 </head>
 
 <body>
-<div class="grid-container">
-  <div class="Header"></div>
-  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
-    	<nav >
-	<ul class="nav nav-pills nav-fill bg-header-purple">
-		<li class="nav-item"><a th:href="@{/account}" class="nav-link active">Account Management</a></li>
-		<li class="nav-item"><a th:href="@{/order}" class="nav-link active">Orders</a></li>
-		<li class="nav-item"><a th:href="@{/product}" class="nav-link active">Products</a></li>
-		<li class="nav-item"><a th:href="@{/customer}" class="nav-link active">Customers</a></li>
-		<li class="nav-item"><a th:href="@{/logout}" class="nav-link active">Logout</a></li>
-	</ul>
-	</nav>
-  </div>
-  <h1> Enter new values </h1>
-  <form action="#" th:action="@{/order/update}" th:object="${orderToUpdate}" method="post" >
-  	<table >
+	<div class="grid-container">
+		<div class="Header"></div>
+		<img th:src="@{/images/header.png}" alt="Header" class="center" />
+		<nav>
+			<ul class="nav nav-pills nav-fill bg-header-purple">
+				<li class="nav-item"><a th:href="@{/account}"
+					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
+				<li class="nav-item"><a th:href="@{/order}"
+					class="nav-link active">Orders</a></li>
+				<li class="nav-item"><a th:href="@{/product}"
+					class="nav-link active">Products</a></li>
+				<li class="nav-item"><a th:href="@{/logout}"
+					class="nav-link active">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+	<h1>Enter new values</h1>
+	<form action="#" th:action="@{/order/update}"
+		th:object="${orderToUpdate}" method="post">
+		<table>
 
-  		<input type="hidden" th:field="*{id}" />
-  		<input type="hidden" th:field="*{customer.id}" />
-  		
-  		<thead>
-  			<th>Factuur nummer</th>
-  			<th>Datum geplaatst</th>
-  			<th>Totale kosten</th>
-  		</thead>	
-  		<tbody>
-			<tr>
-            	<td> <input type="text" th:field="*{id}" readonly></td>
-            	<td> <input type="text" th:field="*{date}"></td>
-            	<td> <input type="text" th:field="*{totalCost}"></td>
-            	<td> <input type="submit" value="Update Order" > </td>
-  			</tr>
-  		</tbody>
-  	</table>
-    <tr>
-      	<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
+			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{customer.id}" />
 
-  	</tr>
-  </form>		
-  </body>
-  </html>
+			<thead>
+				<th>Factuur nummer</th>
+				<th>Datum geplaatst</th>
+				<th>Totale kosten</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" th:field="*{id}" readonly></td>
+					<td><input type="text" th:field="*{date}"></td>
+					<td><input type="text" th:field="*{totalCost}"></td>
+					<td><input type="submit" value="Update Order"></td>
+				</tr>
+			</tbody>
+		</table>
+		<tr>
+			<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
+
+		</tr>
+	</form>
+</body>
+</html>

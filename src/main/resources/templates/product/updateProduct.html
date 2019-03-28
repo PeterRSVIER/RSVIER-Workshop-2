@@ -8,40 +8,46 @@
 </head>
 
 <body>
-<div class="grid-container">
-  <div class="Header"></div>
-  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
-    	<nav >
-	<ul class="nav nav-pills nav-fill bg-header-purple">
-		<li class="nav-item"><a th:href="@{/account}" class="nav-link active">Account Management</a></li>
-		<li class="nav-item"><a th:href="@{/order}" class="nav-link active">Orders</a></li>
-		<li class="nav-item"><a th:href="@{/product}" class="nav-link active">Products</a></li>
-		<li class="nav-item"><a th:href="@{/customer}" class="nav-link active">Customers</a></li>
-		<li class="nav-item"><a th:href="@{/logout}" class="nav-link active">Logout</a></li>
-	</ul>
-	</nav>
-  </div>
-  <h1> Enter new values </h1>
-  <form action="#" th:action="@{/product/update}" th:object="${productToUpdate}" method="post" >
-  	<table >
+	<div class="grid-container">
+		<div class="Header"></div>
+		<img th:src="@{/images/header.png}" alt="Header" class="center" />
+		<nav>
+			<ul class="nav nav-pills nav-fill bg-header-purple">
+				<li class="nav-item"><a th:href="@{/account}"
+					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
+				<li class="nav-item"><a th:href="@{/order}"
+					class="nav-link active">Orders</a></li>
+				<li class="nav-item"><a th:href="@{/product}"
+					class="nav-link active">Products</a></li>
+				<li class="nav-item"><a th:href="@{/logout}"
+					class="nav-link active">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+	<h1>Enter new values</h1>
+	<form action="#" th:action="@{/product/update}"
+		th:object="${productToUpdate}" method="post">
+		<table>
 
-  		<input type="hidden" th:field="*{id}" />
-  
-  		<tr>
-  			<td>Name</td>
-  			<td>Price</td>
-  			<td>Stock</td>
-  		</tr>
+			<input type="hidden" th:field="*{id}" />
+
 			<tr>
-            	<td> <input type="text" th:field="*{name}" ></td>
-            	<td> <input type="text" th:field="*{price}"></td>
-            	<td> <input type="text" th:field="*{stock}"></td>
-  			</tr>
-  	</table>
-    <tr>
-      	<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
-  		<input type="submit" value="Update Product" >
-  	</tr>
-  </form>		
-  </body>
-  </html>
+				<td>Name</td>
+				<td>Price</td>
+				<td>Stock</td>
+			</tr>
+			<tr>
+				<td><input type="text" th:field="*{name}"></td>
+				<td><input type="text" th:field="*{price}"></td>
+				<td><input type="text" th:field="*{stock}"></td>
+			</tr>
+		</table>
+		<tr>
+			<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
+			<input type="submit" value="Update Product">
+		</tr>
+	</form>
+</body>
+</html>

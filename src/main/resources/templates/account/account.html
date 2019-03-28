@@ -10,70 +10,77 @@
 </head>
 <body>
 
-<div class="grid-container">
+	<div class="grid-container">
 
-  <div class="Header"></div>
-  <img th:src="@{/images/header.png}" alt="Header" class="center"/>
-  	<nav >
-	<ul class="nav nav-pills nav-fill bg-header-purple">
-		<li class="nav-item"><a th:href="@{/account}" class="nav-link active">Account Management</a></li>
-		<li class="nav-item"><a th:href="@{/order}" class="nav-link active">Orders</a></li>
-		<li class="nav-item"><a th:href="@{/product}" class="nav-link active">Products</a></li>
-		<li class="nav-item"><a th:href="@{/customer}" class="nav-link active">Customers</a></li>
-		<li class="nav-item"><a th:href="@{/logout}" class="nav-link active">Logout</a></li>
-	</ul>
-	</nav>
-  </div>
-  <div class="m-3" >
-  <div class="Welcome-Message"></div>
-  <h1>Welkom in Peter's Webwinkel</h1>
+		<div class="Header"></div>
+		<img th:src="@{/images/header.png}" alt="Header" class="center" />
+		<nav>
+			<ul class="nav nav-pills nav-fill bg-header-purple">
+				<li class="nav-item"><a th:href="@{/account}"
+					class="nav-link active">Account Management</a></li>
+				<li class="nav-item"><a th:href="@{/customer}"
+					class="nav-link active">Customers</a></li>
+				<li class="nav-item"><a th:href="@{/order}"
+					class="nav-link active">Orders</a></li>
+				<li class="nav-item"><a th:href="@{/product}"
+					class="nav-link active">Products</a></li>
+				<li class="nav-item"><a th:href="@{/logout}"
+					class="nav-link active">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="m-3">
+		<div class="Welcome-Message"></div>
 
-
-			<form action="#"
-				  th:action="@{/account/save}"
-				  th:object="${accountList}"
-				  method="post">
-				<fieldset>
-					<table class="table table-hover">
-					
-						<thead  >
+		<form action="#" th:action="@{/account/save}"
+			th:object="${accountList}" method="post">
+			<fieldset>
+				<table class="table table-hover">
+					<thead>
 						<tr>
 							<th class="centered-cell">Id</th>
-							<th class="centered-cell">Owner </th>
+							<th class="centered-cell">Owner</th>
 							<th class="centered-cell">Email</th>
 							<th class="centered-cell">AccountType</th>
+							<th></th>
 						</tr>
-						</thead>
-						<tbody>
+					</thead>
+					<tbody>
 						<tr th:each="account, accountList : ${accountList}">
-						
-							<td><input th:name="|accounts[${accountList.index}].id|" th:value="${account.id}" readonly class="form-control no-border input-group-text" size="10" /></td>
-							<td><input th:name="|accounts[${accountList.index}].customer.firstname|" th:value="${account.customer.firstname}" class="form-control centered-cell" size="50"readonly /></td>
-							<td><input th:name="|accounts[${accountList.index}].email|" th:value="${account.email}" class="form-control centered-cell" size="150"/></td>
-							<td>
-               		 	<select th:name="|accounts[${accountList.index}].AccountType|" class="form-control">
-                    		<option th:each="dropDownItem : ${accountTypeList}"
-                                     th:value="${dropDownItem}"
-                                     th:text="${dropDownItem}" 
-                                     th:selected="${dropDownItem == account.accountType}">
-                                     />
-               			 </select>
-							</td>
-							<td>
-							<button type="button" class="btn btn-danger" th:href="@{'account/delete/' + ${account.id}} ">Delete</a>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-							<a th:href="@{/medewerkers}" class="btn btn-secondary" role="button">Terug</a>
-							<input type="reset" class="btn btn-secondary" th:value="Reset"/>
-							<a th:href="@{account/create/}" class="btn btn-info" role="button">Nieuw Account toevoegen</a>
-						    <input type="submit" class="btn btn-success" th:value="Save">
-						
-				</fieldset>
-			</form>
 
-		</div>
+							<td><input th:name="|accounts[${accountList.index}].id|"
+								th:value="${account.id}" readonly
+								class="form-control no-border input-group-text" size="10" /></td>
+							<td><input
+								th:name="|accounts[${accountList.index}].customer.firstname|"
+								th:value="${account.customer.firstname}"
+								class="form-control centered-cell" size="50" readonly /></td>
+							<td><input th:name="|accounts[${accountList.index}].email|"
+								th:value="${account.email}" class="form-control centered-cell"
+								size="150" /></td>
+							<td><select
+								th:name="|accounts[${accountList.index}].AccountType|"
+								class="form-control">
+									<option th:each="dropDownItem : ${accountTypeList}"
+										th:value="${dropDownItem}" th:text="${dropDownItem}"
+										th:selected="${dropDownItem == account.accountType}">
+										/>
+							</select></td>
+							<td><button type="button" class="btn btn-danger"
+									th:href="@{'account/delete/' + ${account.id}} ">
+									Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<input type="reset" class="btn btn-secondary" th:value="Reset" /> <a
+					th:href="@{account/create/}" class="btn btn-info" role="button">Nieuw
+					Account toevoegen</a> <input type="submit" class="btn btn-success"
+					th:value="Save">
+
+			</fieldset>
+		</form>
+
+	</div>
 	</div>
 	</div>
 </body>
