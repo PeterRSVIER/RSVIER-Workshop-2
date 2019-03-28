@@ -1,4 +1,4 @@
-package base.web;
+package base.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,8 +27,8 @@ import base.Account;
 import base.Account.AccountType;
 import base.Customer;
 import base.container.AccountListContainer;
-import base.data.AccountRepository;
-import base.data.CustomerRepository;
+import base.repository.AccountRepository;
+import base.repository.CustomerRepository;
 
 @RequestMapping("/account")
 @Controller

@@ -1,4 +1,4 @@
-package base.web;
+package base.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,8 +19,8 @@ import base.Customer;
 import base.Order;
 import base.OrderLine;
 import base.Product;
-import base.data.OrderLineRepository;
-import base.data.OrderRepository;
+import base.repository.OrderLineRepository;
+import base.repository.OrderRepository;
 
 @RequestMapping("/order")
 @Controller

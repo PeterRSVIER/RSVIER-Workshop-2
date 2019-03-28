@@ -12,11 +12,11 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import base.Account.AccountType;
-import base.data.AccountRepository;
-import base.data.CustomerRepository;
-import base.data.OrderLineRepository;
-import base.data.OrderRepository;
-import base.data.ProductRepository;
+import base.repository.AccountRepository;
+import base.repository.CustomerRepository;
+import base.repository.OrderLineRepository;
+import base.repository.OrderRepository;
+import base.repository.ProductRepository;
 
 @SpringBootApplication
 public class Application implements WebMvcConfigurer {

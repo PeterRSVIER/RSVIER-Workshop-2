@@ -1,4 +1,4 @@
-package base.web;
+package base.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import base.Product;
-import base.data.ProductRepository;
+import base.repository.ProductRepository;
 
 
 @RequestMapping("/product")

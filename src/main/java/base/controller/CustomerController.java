@@ -1,4 +1,4 @@
-package base.web;
+package base.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import base.Customer;
-import base.data.CustomerRepository;
+import base.repository.CustomerRepository;
 
 @RequestMapping("/customer")
 @Controller

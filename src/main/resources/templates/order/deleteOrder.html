@@ -26,28 +26,29 @@
 			</ul>
 		</nav>
 	</div>
-	<h1>Confirm delete Order</h1>
+	
+	<div class="m-3">
 	<form action="#" th:action="@{/order/delete}"
 		th:object="${orderToDelete}" method="post">
-		<table>
+		<table class="table table-striped table-hover">
 			<input type="hidden" th:field="*{id}" />
 
 			<thead>
-				<th>Factuur nummer</th>
-				<th>Datum geplaatst</th>
-				<th>Totale kosten</th>
+				<th class="centered-cell">Factuur nummer</th>
+				<th class="centered-cell">Datum geplaatst</th>
+				<th class="centered-cell">Totale kosten</th>
 			</thead>
 			<tbody>
 				<tr>
-					<td th:text="*{id}" th:field="*{id}"></td>
-					<td th:text="*{date}" th:field="*{date}"></td>
-					<td th:text="*{totalCost}" th:field="*{totalCost}"></td>
-					<td><input type="submit" value="Confirm Deletion"></td>
+					<td th:text="*{id}" th:field="*{id}" class="centered-cell"></td>
+					<td th:text="*{#temporals.format(date, 'dd-MMM-yyyy HH:mm')}" class="centered-cell"></td>
+					<td th:text="*{totalCost}" th:field="*{totalCost}" class="centered-cell"></td>
+					<td><input type="submit" value="Confirm Deletion" class="btn btn-danger centered-cell"></td>
 				</tr>
 			</tbody>
 		</table>
 		<tr>
-			<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
+			<a th:href="@{/order}" class="btn btn-dark">Back</a>
 
 		</tr>
 	</form>
@@ -55,6 +56,6 @@
 	<div>
 		<span class="validationError" th:text="${deleteOrderError}"></span>
 	</div>
-	</p>
+	</div>
 </body>
 </html>

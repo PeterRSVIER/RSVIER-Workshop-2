@@ -1,4 +1,4 @@
-package base.web;
+package base.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import base.Account;
 import base.Account.AccountType;
-import base.data.AccountRepository;
-import base.data.CustomerRepository;
+import base.repository.AccountRepository;
+import base.repository.CustomerRepository;
 
 @Controller
 @RequestMapping("/login")
