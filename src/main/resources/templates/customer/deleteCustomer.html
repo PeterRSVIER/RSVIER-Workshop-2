@@ -21,33 +21,31 @@
 	</ul>
 	</nav>
   </div>
-  <h1> Confirm delete Customer </h1>
+  	<div class="m-3">
   <form action="#" th:action="@{'/customer/delete/' + ${customerToDelete.id}}" th:object="${customerToDelete}" method="post" >
-
-  	<table >
-  		<input type="hidden" th:field="*{id}" />
-  		
-  		<thead>
-  			<tr>
-  				<td>Firstname</td>
-  				<td>Middlename</td>
-  				<td>Surname</td>
-  			</tr>
+  
+  <table class="table table-striped table-hover">  		
+  		<thead >
+  		<tr>
+  				<th>Firstname</th>
+  				<th>Middlename</th>
+  				<th>Surname</th>
+  				<th></th>
+  		</tr>
   		</thead>
-  		
+ 
   		<tbody>
 			<tr>              	
             	<td th:text="*{firstname}" th:field="*{firstname}" ></td>
             	<td th:text="*{middlename}" th:field="*{middlename}"></td>
             	<td th:text="*{surname}" th:field="*{surname}"></td>
+            	<td > <input type="submit" value="Confirm Deletion" class="btn btn-danger">
   			</tr>
   		</tbody>
+  		<input type="hidden" th:field="*{id}" />
   	</table>
-  	<tr>
-  		<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
-  		<input type="submit" value="Confirm Deletion" >
-  	</tr>
   	 <p><div><span class="validationError" th:text="${deleteCustomerError}"></span></div></p>
-  </form>		
+  </form>	
+  </div>	
   </body>
   </html>

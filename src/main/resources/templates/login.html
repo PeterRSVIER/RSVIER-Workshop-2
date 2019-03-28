@@ -10,19 +10,39 @@
 
   <div class="Header"></div>
   <img th:src="@{/images/header.png}" alt="Header" class="center"/>
-  
   </div>
   
-  <div class="Welcome-Message"></div>
+  <div class="m-3">
   <h1>Welkom in Peter's Webwinkel</h1>
+  
+  
+  <form method="POST" th:object="${account}" th:action="@{/login}">
+  
+  <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Login Details</span>
   </div>
+  
+  <table>
+  <tr>
+  <td >
+  <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" th:field="*{email}">
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" th:field="*{password}">
+  </td>
+  </tr>
+  <tr>
+     			<td colspan="2"><input type="submit" value="Inloggen" class="btn-block"/> </td>
+ </tr>
+  
+  </table>
+</div>
 
-    <form method="POST" th:object="${account}" th:action="@{/login}">
-    
-            <p><label>Email: </label> <input type="text"  th:field="*{email}" </input></p>
-            <p><label>Password: </label><input type="text"  th:field="*{password}"</input></p>
             
- 			<p><input class="buttonLogin" type="submit" value="Inloggen"/></p>
+
  
  <p><div><span class="validationError" th:text="${incorrectLogin}"></span></div></p>
  <p><div><span class="validationError" th:text="${inputAccount}"></span></div></p>
@@ -30,6 +50,7 @@
  <p><div><span class="validationError" th:text="${defaultAccount}"></span></div></p>
 
 </form>
+</div>
 </div>
 </body>
 </html>

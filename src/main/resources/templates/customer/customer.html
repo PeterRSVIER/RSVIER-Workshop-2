@@ -21,37 +21,42 @@
 	</ul>
 	</nav>
   </div>
-  <table>
+  <div class="w-100">
+  <div class="m-3">
+  <table class="table table-hover">
   		<thead>
   			<th>Firstname</th>
   			<th>Middlename</th>
   			<th>Surname</th>
+  			<th></th>
+  			<th></th>
   		</thead>
   		
   		<tbody>
   			<tr th:each="customer:${customerList}">
-            	<td th:text="${customer.firstname}"></td>
-            	<td th:text="${customer.middlename}"></td>
-            	<td th:text="${customer.surname}"></td>
+            	<td th:text="${customer.firstname}" width="30%"></td>
+            	<td th:text="${customer.middlename}" width="30%"></td>
+            	<td th:text="${customer.surname}" width="30%"></td>
 
-  				<td> 
+  				<td width="5%"> 
   					<a th:href="@{'/customer/update/' + ${customer.id}}">
-  						<input type="submit" value="Update"/>
+  						<input type="submit" value="Update" class="btn btn-success"/>
   					</a>
   					
             	</td>
-           	 	<td> 	
+           	 	<td width="5%"> 	
             		<a th:href="@{'/customer/delete/' + ${customer.id}}">
-            			<input type="submit" value="Delete"/>
+            			<input type="submit" value="Delete" class="btn btn-danger"/>
             		</a>
             	</td>
   			</tr>
   		</tbody>
   </table>
-  				<a class="button center" th:href="@{medewerkers}">Terug</a>
     			<a th:href="@{'/customer/create/'}">
-    				<input type="submit" value="Create new Customer">
+    				<input type="submit" value="Create new Customer" class="btn btn-dark">
     			</a>
     			<p><div><span class="validationError" th:text="${deleteCustomerError}"></span></div></p>
+    </div>
+    </div>
   </body>
   </html>

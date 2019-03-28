@@ -21,28 +21,39 @@
 	</ul>
 	</nav>
 	</div>
-	<h1>Enter new values</h1>
+	
+	
+
+	
+	<div class="m-3">
+	<div class="input-group">
 	<form action="#" th:action="@{/customer/update}"
 		th:object="${customerToUpdate}" method="post">
-		<table>
+		<table class="table table-hover">
 
 			<input type="hidden" th:field="*{id}" />
 
+			<thead>
 			<tr>
-				<td>Firstname</td>
-				<td>Middlename</td>
-				<td>Surname</td>
-			</tr>
+				<th>Firstname</th>
+				<th>Middlename</th>
+				<th>Surname</th>
+				</tr>
+			</thead>
 			<tr>
-				<td><input type="text" th:field="*{firstname}"></td>
-				<td><input type="text" th:field="*{middlename}"></td>
-				<td><input type="text" th:field="*{surname}"></td>
+				<td><input type="text" th:field="*{firstname}" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></td>
+				<td><input type="text" th:field="*{middlename}" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></td>
+				<td><input type="text" th:field="*{surname}" class="form-control" ></td>
+				<td><input type="submit" value="Update customer" class="btn btn-success"></td>
+
+				
 			</tr>
 		</table>
 		<tr>
-			<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
-			<input type="submit" value="Update customer">
+			<a th:href="@{/customer}" class="btn btn-secondary">Back</a>
 		</tr>
 	</form>
+	</div>
+	</div>
 </body>
 </html>

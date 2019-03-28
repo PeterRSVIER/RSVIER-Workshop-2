@@ -21,7 +21,6 @@
 	</ul>
 	</nav>
   </div>
-  <h1> Confirm delete Product </h1>
   <form action="#" th:action="@{/product/delete}" th:object="${productToDelete}" method="post" >
   	<table >
   		<input type="hidden" th:field="*{id}" />

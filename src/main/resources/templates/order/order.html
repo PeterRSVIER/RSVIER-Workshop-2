@@ -21,11 +21,13 @@
 	</ul>
 	</nav>
   </div>
-    <table>
+    <table class="table table-striped table-hover">
   		<thead>
   			<th>Factuur nummer</th>
   			<th>Datum geplaatst</th>
   			<th>Totale kosten</th>
+  			<th></th>
+  			<th></th>
   		</thead>
   		
   		<tbody>
@@ -47,7 +49,6 @@
   			</tr>
   		</tbody>
   </table>
-    			<a th:href="@{/medewerkers}">Terug</a>
       			<a th:href="@{'/order/create/'}">
     				<input type="submit" value="Create new Order">
     			</a>
