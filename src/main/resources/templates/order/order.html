@@ -21,39 +21,43 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a th:href="@{/}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
 	</div>
+	<div class="m-3">
 	<table class="table table-striped table-hover">
 		<thead>
-			<th>Factuur nummer</th>
-			<th>Datum geplaatst</th>
-			<th>Totale kosten</th>
+			<th class="centered-cell">Factuur nummer</th>
+			<th class="centered-cell">Datum geplaatst</th>
+			<th class="centered-cell">Totale kosten</th>
 			<th></th>
 			<th></th>
 		</thead>
 
 		<tbody>
 			<tr th:each="order:${orderListOfCustomer}">
-				<td th:text="${order.id}"></td>
-				<td th:text="${order.date}"></td>
-				<td th:text="${order.totalCost}"></td>
+				<td th:text="${order.id}" class="centered-cell"></td>
+				<td th:text= "${#temporals.format(order.date, 'dd-MMM-yyyy HH:mm')}" class="centered-cell"></td>
+				<td th:text="&#8364; + ${order.totalCost}" class="centered-cell"></td>
 
-				<td><a th:href="@{'/order/update/' + ${order.id}}"> <input
-						type="submit" value="Update" />
+				<td width="5%"><a th:href="@{'/order/update/' + ${order.id}}"> <input
+						type="submit" class="btn btn-success" value="Update" />
 				</a></td>
-				<td><a th:href="@{'/order/delete/' + ${order.id}}"> <input
-						type="submit" value="Delete" />
+				<td width="5%"><a th:href="@{'/order/delete/' + ${order.id}}"> <input
+						type="submit" class="btn btn-danger" value="Delete" />
+				</a></td>
+				<td width="5%"><a th:href="@{'/order/view/' + ${order.id}}"> <input
+						type="submit" class="btn btn-primary" value="View" />
 				</a></td>
 			</tr>
 		</tbody>
 	</table>
 	<a th:href="@{'/order/create/'}"> <input type="submit"
-		value="Create new Order">
+		value="Create new Order" class="btn btn-dark">
 	</a>
-
+</div>
 </body>
 
 

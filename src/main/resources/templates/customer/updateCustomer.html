@@ -21,7 +21,7 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a th:href="@{/}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
@@ -37,29 +37,28 @@
 
 					<thead>
 						<tr>
-							<th>Firstname</th>
-							<th>Middlename</th>
-							<th>Surname</th>
+							<th class="centered-cell">Firstname</th>
+							<th class="centered-cell">Middlename</th>
+							<th class="centered-cell">Surname</th>
 						</tr>
 					</thead>
 					<tr>
 						<td><input type="text" th:field="*{firstname}"
-							class="form-control" placeholder="Username" aria-label="Username"
+							class="form-control centered-cell" placeholder="Firstname" aria-label="Firstname"
 							aria-describedby="basic-addon1"></td>
 						<td><input type="text" th:field="*{middlename}"
-							class="form-control" placeholder="Username" aria-label="Username"
+							class="form-control centered-cell" placeholder="MiddleName" aria-label="MiddleName (optional)"
 							aria-describedby="basic-addon1"></td>
 						<td><input type="text" th:field="*{surname}"
-							class="form-control"></td>
-						<td><input type="submit" value="Update customer"
-							class="btn btn-success"></td>
+							class="form-control centered-cell" placeholder="Surname" aria-label="Surname"></td>
+						<td><input type="submit" value="Update customer" class="btn btn-success"></td>
 
 
 					</tr>
 				</table>
-				<tr>
+				<div class="m-2">
 					<a th:href="@{/customer}" class="btn btn-secondary">Back</a>
-				</tr>
+				</div>
 			</form>
 		</div>
 	</div>

@@ -1,10 +1,20 @@
-form{ display: inline-block; }
+form{ display: inline-block;}
+label {
+    display: inline-block;
+    margin: 3px;
+}
 
+.bottom_aligner {
+    display: inline-block;
+    height: 100%;
+    vertical-align: bottom;
+    width: 0px;
+}
 .grid-container {
   display: grid;
-  grid-template-columns: 0.7fr 0.7fr 0.5fr;
-  grid-template-rows: 0.1fr 1.8fr 0.1;
-  grid-template-areas: "header header header" "orderLinks orderMidden orderRechts" "orderLinks orderMidden buttons3";
+  grid-template-columns: 0.5fr 0.9fr 0.6fr;
+  grid-template-rows: 0.1fr 1.8fr;
+  grid-template-areas: "header header header" "orderLinks orderMidden orderRechts";
 }
 
 .orderLinks { grid-area: orderMidden; }
@@ -13,13 +23,12 @@ form{ display: inline-block; }
 
 .orderRechts { grid-area: orderRechts; }
 
-.buttons3 { grid-area: buttons3; display: table-cell;
-vertical-align: bottom;}
+.buttons3 { grid-area: buttons3; vertical-align: bottom;}
 
 .header { grid-area: header; background-color: #660033; }
 
 .center {
-  margin-left: 5%;
+  margin-left: 45%;
   margin-right: auto;
   width: 10%;
   
@@ -32,6 +41,7 @@ vertical-align: bottom;}
   width: 100%;
   clear: both;
 }
+}
 
 .bg-header-purple {
     background-color: #600030!important
@@ -40,3 +50,19 @@ vertical-align: bottom;}
 .nav-pills .nav-link.active {
     background-color: #600030!important;
 }
+
+.bottomdiv {
+    border: 1px solid red;
+    height: 50px;
+    width: 50px;
+    position:absolute;
+    left:0;
+    bottom:0;
+}
+.col-md-6.col-sm-6.col-xs-6 {
+    display: table-cell;
+    height: auto;
+    border: 1px solid black;
+    float: none;
+}
+

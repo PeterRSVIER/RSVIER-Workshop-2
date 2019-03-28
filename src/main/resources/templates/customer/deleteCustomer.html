@@ -21,7 +21,7 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a th:href="@{/}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
@@ -52,7 +52,9 @@
 				</tbody>
 				<input type="hidden" th:field="*{id}" />
 			</table>
-			<p>
+				
+					<a th:href="@{/customer}" class="btn btn-secondary">Back</a>
+				
 			<div>
 				<span class="validationError" th:text="${deleteCustomerError}"></span>
 			</div>

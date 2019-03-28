@@ -48,29 +48,14 @@ public class LoginController {
 				return "/medewerkers"; // Naar medewerker pagina
 			}
 
-			if (accountFromDB.getAccountType() == AccountType.Customer) {
+			else {
 				model.addAttribute("account", accountFromDB);
 				return "/klanten"; // naar klanten
 			}
 		}
 
-		/// Onderstaande code print input en returned account naar browser
-		String isNull = "Opgehaalde account = null";
-		model.addAttribute("incorrectLogin", new String ("Het email of wachtwoord is incorrect"));
-		model.addAttribute("inputAccount", new String ("Opgehaalde account = null" + account.toString()));
-		if (accountFromDB != null) {
-			String returnAccount = accountFromDB.toString();
-			model.addAttribute("Opgehaalde account =", returnAccount);
-		}
-		
-		else {
-		model.addAttribute("returnAccount", isNull);
-		}
-		
-// 		Read By ID geeft hier ook een nullpointer terug
-		
-		String defaultAccount = "Default Account =" + accountRepository.findById(1).toString();
-		model.addAttribute("defaultAccount", defaultAccount);
+		model.addAttribute("incorrectLogin", new String ("De combinatie van het ingevoerde email en wachtwoord is incorrect"));
+
 		return "login";
 
 	}

@@ -82,6 +82,54 @@ public class Application implements WebMvcConfigurer {
 	  	product2.setPrice(new BigDecimal("69.95"));
 		productRepository.save(product2);
 		
+	  	Product product3 = new Product();
+	  	product3.setName("Legends of Andor");
+	  	product3.setStock(20);
+	  	product3.setPrice(new BigDecimal("44.95"));
+		productRepository.save(product3);
+		
+	  	Product product4 = new Product();
+	  	product4.setName("Ticket To Ride: Europe");
+	  	product4.setStock(20);
+	  	product4.setPrice(new BigDecimal("49.95"));
+		productRepository.save(product4);
+		
+	  	Product product5 = new Product();
+	  	product5.setName("Monopoly");
+	  	product5.setStock(20);
+	  	product5.setPrice(new BigDecimal("30.00"));
+		productRepository.save(product5);
+		
+	  	Product product6 = new Product();
+	  	product6.setName("Through The Ages");
+	  	product6.setStock(20);
+	  	product6.setPrice(new BigDecimal("49.95"));
+		productRepository.save(product6);
+		
+	  	Product product7 = new Product();
+	  	product7.setName("Scythe");
+	  	product7.setStock(20);
+	  	product7.setPrice(new BigDecimal("68.50"));
+		productRepository.save(product7);
+		
+	  	Product product8 = new Product();
+	  	product8.setName("Mage Knight");
+	  	product8.setStock(20);
+	  	product8.setPrice(new BigDecimal("74.95"));
+		productRepository.save(product8);
+		
+	  	Product product9 = new Product();
+	  	product9.setName("Dominant Species");
+	  	product9.setStock(20);
+	  	product9.setPrice(new BigDecimal("99.90"));
+		productRepository.save(product9);
+		
+	  	Product product10 = new Product();
+	  	product10.setName("Stef Stuntpiloot");
+	  	product10.setStock(20);
+	  	product10.setPrice(new BigDecimal("20.00"));
+		productRepository.save(product10);
+		
 		Order order1 = new Order();
 		order1.setCustomer(customer);
 		order1.setDate(LocalDateTime.now());

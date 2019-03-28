@@ -21,33 +21,43 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
-					class="nav-link active">Logout</a></li>
+				<li class="nav-item"><a th:href="@{/}" class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
 	</div>
-	<h1>Enter new values</h1>
-	<form action="#" th:action="@{/product/update}"
-		th:object="${productToUpdate}" method="post">
-		<table>
 
-			<input type="hidden" th:field="*{id}" />
+	<div class="m-3">
+		<div class="input-group">
+			<form action="#" th:action="@{/product/update}"
+				th:object="${productToUpdate}" method="post">
 
-			<tr>
-				<td>Name</td>
-				<td>Price</td>
-				<td>Stock</td>
-			</tr>
-			<tr>
-				<td><input type="text" th:field="*{name}"></td>
-				<td><input type="text" th:field="*{price}"></td>
-				<td><input type="text" th:field="*{stock}"></td>
-			</tr>
-		</table>
-		<tr>
-			<a th:href="@{/medewerkers}">Terug naar Hoofdmenu</a>
-			<input type="submit" value="Update Product">
-		</tr>
-	</form>
+				<table class="table table-hover">
+
+					<input type="hidden" th:field="*{id}" />
+					<thead>
+						<tr>
+							<th class="centered-cell">Name</th>
+							<th class="centered-cell">Price</th>
+							<th class="centered-cell">Stock</th>
+						</tr>
+						<tr>
+							<td><input type="text" th:field="*{name}"
+								class="form-control centered-cell"></td>
+							<td><input type="text" th:field="*{price}"
+								class="form-control centered-cell"></td>
+							<td><input type="text" th:field="*{stock}"
+								class="form-control centered-cell"></td>
+							<td><input type="submit" value="Update Product"
+								class="btn btn-success"></td>
+						</tr>
+				</table>
+				<div class="m-2">
+					<a th:href="@{/product}" class="btn btn-secondary">Back</a>
+				</div>
+
+
+			</form>
+		</div>
+	</div>
 </body>
 </html>

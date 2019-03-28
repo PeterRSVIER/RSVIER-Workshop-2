@@ -24,7 +24,7 @@ import base.data.OrderRepository;
 
 @RequestMapping("/order")
 @Controller
-@SessionAttributes({"selectedCustomer","orderLineList"})
+@SessionAttributes({"selectedCustomer","orderLineList", "orderedProductList"})
 public class OrderController {
 
 CustomerController customerController;
@@ -70,6 +70,12 @@ public List<Product> productList() {
 	return productController.productList();
 }
 
+@ModelAttribute (name = "orderedProductList")
+public List<Product> orderedProductList() {
+	List<Product> list = new ArrayList<>();
+	return list;
+}
+
 @ModelAttribute
 public Product product() {
 	return productController.product();
@@ -89,7 +95,12 @@ public String selectCustomer() {
 public String selectCustomerPost(Customer customer, Model model) {
 	model.addAttribute("orderListOfCustomer", getOrderListOfCustomer(customer.getId()));
 	model.addAttribute("selectedCustomer", customer);
-	System.out.println("selectedCustomer In PostMapping = " + customer);
+	
+	//Temporary to clear Attributes
+	List<OrderLine>orderLineList = new ArrayList<>();
+	model.addAttribute("orderLineList", orderLineList);
+	List<Product> orderedProductList = new ArrayList<>();
+	model.addAttribute("orderedProductList", orderedProductList);
 	return "order/order";
 }
 
@@ -104,9 +115,16 @@ public String createOrderForm(Model model){
 }
 
 @PostMapping(value = "create/addOrderLine")
-public String addOrderLineToList (OrderLine orderLine, @ModelAttribute("orderLineList") List<OrderLine> orderLineList, Model model) {
+public String addOrderLineToList (OrderLine orderLine, @ModelAttribute("orderLineList") List<OrderLine> orderLineList, @ModelAttribute("orderedProductList") List<Product> orderedProductList, Model model) {
+	System.out.println("OrderLine: = " + orderLine);
 	orderLineList.add(orderLine);
+	Product product = productController.productRepository.findById(orderLine.getProduct().getId()).get();
+	System.out.println("Product = : " + product);
+	orderedProductList.add(product);
+	System.out.println("orderedProductList = " + orderedProductList);
 	model.addAttribute("orderLineList", orderLineList);
+	model.addAttribute("orderedProductList", orderedProductList);
+	System.out.println(orderedProductList);
 	return "order/createOrder";
 }
 
@@ -148,9 +166,11 @@ public String createOrder(@ModelAttribute("selectedCustomer") Customer selectedC
 }
 
 @PostMapping(value = "create/clear")
-public String clearOrder(@ModelAttribute List<OrderLine> orderLineList, Model model) {
+public String clearOrder(@ModelAttribute List<OrderLine> orderLineList, @ModelAttribute List<Product> orderedProductList, Model model) {
 	orderLineList = new ArrayList<OrderLine>();
 	model.addAttribute("orderLineList", orderLineList);
+	orderedProductList = new ArrayList<Product>();
+	model.addAttribute("orderedProductList", orderedProductList);
 	return ("order/createOrder");
 }
 
@@ -198,4 +218,5 @@ public String confirmDeleteOrder(Order order, Model model) {
 	}
 	return ("redirect:/medewerkers");
 }
+
 }

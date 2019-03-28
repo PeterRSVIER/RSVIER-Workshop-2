@@ -22,7 +22,7 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a th:href="@{/}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
@@ -40,7 +40,7 @@
 			</select> <br /> <label>Customer</label> <select th:field="*{customer.id}">
 				<option th:each="dropDownItem : ${customerListWithoutAccount}"
 					th:value="${dropDownItem.getId()}"
-					th:text="${dropDownItem.getFirstname() + dropDownItem.getMiddlename() + dropDownItem.getSurname()}" />
+					th:text="${dropDownItem.getFirstname() + ' '+ dropDownItem.getMiddlename() + ' ' + dropDownItem.getSurname()}" />
 			</select> <br />
 		</div>
 		<a class="button center" th:href="@{/medewerkers}">Terug naar

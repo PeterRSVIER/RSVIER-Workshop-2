@@ -21,31 +21,32 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a th:href="@{/}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
 	</div>
-
-	<h3>From which customer do you wish to view the orders?</h3>
+	<div class="m-3">
+	<h3>Select a customer</h3>
 
 	<form action="#" th:action="@{/order}" th:object="${customer}"
 		method="post">
-		<table>
-			<thead>
-				<th>Customer</th>
-			</thead>
+		
+		<div class="form-group">
+		<table table-striped table-hover style="width: 20%">
+
 			<tbody>
-				<td><select th:field="*{id}">
+				<tr><td><select th:field="*{id}" multiple size="10" class="form-control">
 						<option th:each="dropDownItem : ${customerList}"
 							th:value="${dropDownItem.getId()}"
-							th:text="${dropDownItem.firstname}">
-				</select></td>
+							th:text="${dropDownItem.firstname} + ' ' + ${dropDownItem.middlename} + ' ' + ${dropDownItem.surname}">
+				</select></td></tr>
+				<tr><td>
+				<input type="submit" value="View Orders of Customer" class="btn btn-secondary" style="width: 100%">
+				</td></tr>
 			</tbody>
 		</table>
-		<input type="submit" value="View Orders of Customer">
 	</form>
-	<a th:href="@{/medewerkers}">Terug</a>
-	<a th:href="@{order/allOrders/}">Bekijk alle orders</a>
+	</div>
 </body>
 </html>

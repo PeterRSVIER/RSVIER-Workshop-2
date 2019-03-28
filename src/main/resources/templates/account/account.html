@@ -24,7 +24,7 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a th:href="@{/}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
@@ -52,8 +52,8 @@
 								th:value="${account.id}" readonly
 								class="form-control no-border input-group-text" size="10" /></td>
 							<td><input
-								th:name="|accounts[${accountList.index}].customer.firstname|"
-								th:value="${account.customer.firstname}"
+								th:name="|accounts[${accountList.index}].customer.firstname| + ' ' + |accounts[${accountList.index}].customer.middlename| + ' ' + |accounts[${accountList.index}].customer.surname|"
+								th:value="${account.customer.firstname} + ' ' + ${account.customer.middlename} + ' ' + ${account.customer.surname}"
 								class="form-control centered-cell" size="50" readonly /></td>
 							<td><input th:name="|accounts[${accountList.index}].email|"
 								th:value="${account.email}" class="form-control centered-cell"
@@ -64,19 +64,16 @@
 									<option th:each="dropDownItem : ${accountTypeList}"
 										th:value="${dropDownItem}" th:text="${dropDownItem}"
 										th:selected="${dropDownItem == account.accountType}">
-										/>
 							</select></td>
-							<td><button type="button" class="btn btn-danger"
-									th:href="@{'account/delete/' + ${account.id}} ">
-									Delete</a></td>
+							<td><a th:href="@{'account/delete/' + ${account.id}}" class="btn btn-danger" role="button">Delete</a></td>
 						</tr>
 					</tbody>
 				</table>
-				<input type="reset" class="btn btn-secondary" th:value="Reset" /> <a
-					th:href="@{account/create/}" class="btn btn-info" role="button">Nieuw
-					Account toevoegen</a> <input type="submit" class="btn btn-success"
-					th:value="Save">
-
+				<div class="m-2">
+				<input type="reset" class="btn btn-secondary" th:value="Reset" /> 
+				<a th:href="@{account/create/}" class="btn btn-info" role="button">Nieuw account toevoegen</a> 
+				<input type="submit" class="btn btn-success" value="Save all accounts">
+				</div>
 			</fieldset>
 		</form>
 

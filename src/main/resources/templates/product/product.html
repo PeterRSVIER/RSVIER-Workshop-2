@@ -21,7 +21,7 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a th:href="@{/}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
@@ -39,7 +39,7 @@
 			<tbody>
 				<tr th:each="product:${productList}">
 					<td th:text="${product.name}"></td>
-					<td th:text="${product.price}"></td>
+					<td th:text="&#8364; + ${product.price}"></td>
 					<td th:text="${product.stock}"></td>
 
 
