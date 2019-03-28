@@ -5,7 +5,6 @@
   background-color: #660033;
 }
 
-
 .Header { 
 grid-area: Header; 
 }
@@ -38,4 +37,12 @@ grid-area: Login-Here;
   width: 100%;
   clear: both;
 }
+}
+
+.bg-header-purple {
+    background-color: #600030
+}
+
+.nav-pills .nav-link.active {
+    background-color: #600030!important;
 }
