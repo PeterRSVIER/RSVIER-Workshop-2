@@ -33,3 +33,10 @@ vertical-align: bottom;}
   clear: both;
 }
 
+.bg-header-purple {
+    background-color: #600030!important
+}
+
+.nav-pills .nav-link.active {
+    background-color: #600030!important;
+}

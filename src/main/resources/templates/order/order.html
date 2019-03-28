@@ -3,14 +3,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Peter's Webwinkel</title>
-<link rel="stylesheet" th:href="@{/home.css}" />
 <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/home.css}" />
 </head>
 
 <body>
 <div class="grid-container">
   <div class="Header"></div>
   <img th:src="@{/images/header.png}" alt="Header" class="center"/>
+    	<nav >
+	<ul class="nav nav-pills nav-fill bg-header-purple">
+		<li class="nav-item"><a th:href="@{/account}" class="nav-link active">Account Management</a></li>
+		<li class="nav-item"><a th:href="@{/order}" class="nav-link active">Orders</a></li>
+		<li class="nav-item"><a th:href="@{/product}" class="nav-link active">Products</a></li>
+		<li class="nav-item"><a th:href="@{/customer}" class="nav-link active">Customers</a></li>
+		<li class="nav-item"><a th:href="@{/logout}" class="nav-link active">Logout</a></li>
+	</ul>
+	</nav>
   </div>
     <table>
   		<thead>
