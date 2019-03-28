@@ -65,25 +65,11 @@ public class AccountController {
 	@ModelAttribute(name = "customerListWithoutAccount")
 	public List<Customer> customerListWithoutAccount() {
 		
-		// Deze methode verbeteren, nu een ontzettende rommel 
 		List<Customer> customerList = customerController.customerList();
 		List<Account> accountList = (List<Account>) accountRepository.findAll();
 		Set<Customer> customersInAccountList = accountList.stream().map(Account::getCustomer)
 				.collect(Collectors.toSet());
-		List<Integer> indexToRemove = new ArrayList<>();
-		
-		for (int i = 0; i < customerList.size(); i++) {
-			System.out.println("Loop index" + i + "=" + customerList.get(i));
-			if (customersInAccountList.contains(customerList.get(i))) {
-				indexToRemove.add(i);
-			}
-		}
-		Collections.reverse(indexToRemove);
-		System.out.println(indexToRemove);
-		for (int i = 0; i < indexToRemove.size(); i++) {
-			customerList.remove((int)indexToRemove.get(i));
-		}
-		return customerList;
+		return customerList.stream().filter(c -> !customersInAccountList.contains(c)).collect(Collectors.toList());
 	}
 
 	@ModelAttribute(name = "customer")

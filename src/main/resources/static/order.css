@@ -4,7 +4,7 @@ form{ display: inline-block; }
   display: grid;
   grid-template-columns: 0.7fr 0.7fr 0.5fr;
   grid-template-rows: 0.1fr 1.8fr 0.1;
-  grid-template-areas: "header header header" "orderLinks orderMidden orderRechts" "buttons buttons buttons";
+  grid-template-areas: "header header header" "orderLinks orderMidden orderRechts" "buttons buttons buttons3";
 }
 
 .orderLinks { grid-area: orderMidden; }
@@ -14,6 +14,8 @@ form{ display: inline-block; }
 .orderRechts { grid-area: orderRechts; }
 
 .buttons { grid-area: buttons; }
+
+.buttons3 { grid-area: buttons; }
 
 .header { grid-area: header; background-color: #660033; }
 

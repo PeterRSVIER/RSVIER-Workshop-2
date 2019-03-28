@@ -15,7 +15,7 @@
   <div class="Header"></div>
   <img th:src="@{/images/header.png}" alt="Header" class="center"/>
   </div>
-  
+  <div class="m-3" >
   <div class="Welcome-Message"></div>
   <h1>Welkom in Peter's Webwinkel</h1>
 
@@ -56,15 +56,16 @@
 						</tr>
 						</tbody>
 					</table>
-							
+							<a th:href="@{medewerkers}" class="btn btn-secondary" role="button">Terug</a>
+							<input type="reset" class="btn btn-secondary" th:value="Reset"/>
+							<a th:href="@{account/create/}" class="btn btn-info" role="button">Nieuw Account toevoegen</a>
 						    <input type="submit" class="btn btn-success" th:value="Save">
-						    <input type="reset" class="btn btn-info" th:value="Reset"/>
-					
+						
 				</fieldset>
 			</form>
-			<a class="button center" th:href="@{medewerkers}">Terug</a>
-			<a class="button center" th:href="@{account/create/}">Account toevoegen</a>
+
 		</div>
+	</div>
 	</div>
 </body>
 </html>
