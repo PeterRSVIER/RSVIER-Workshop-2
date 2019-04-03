@@ -17,7 +17,7 @@
 			<a th:text ="'Logged in with email: ' + ${#authentication.getPrincipal().getUsername()}"></a>
 		</font>
 		</div>
-		
+		<form method="POST" th:action="@{/logout}">
 		<nav>
 			<ul class="nav nav-pills nav-fill bg-header-purple">
 				<li class="nav-item"><a th:href="@{/account}"
@@ -28,10 +28,11 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/logout}"
+				<li class="nav-item"><a type="submit" th:href="@{/logout}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
+		</form>
 	</div>
 </body>
 </html>
