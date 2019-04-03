@@ -32,6 +32,9 @@
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>
+		<input type="hidden"
+                name="${_csrf.parameterName}"
+                value="${_csrf.token}"/>
 		</form>
 	</div>
 </body>
