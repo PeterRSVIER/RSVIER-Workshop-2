@@ -43,7 +43,7 @@ public class Application implements WebMvcConfigurer {
     }
     
 	@Bean
-  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository, ProductRepository productRepository, OrderRepository orderRepository, OrderLineRepository orderLineRepository) {
+  public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository, ProductRepository productRepository, OrderRepository orderRepository, OrderLineRepository orderLineRepository, Services services) {
     return new CommandLineRunner() {
       @Override
       public void run(String... args) throws Exception {
@@ -68,8 +68,8 @@ public class Application implements WebMvcConfigurer {
  
 	    Account account = new Account();
 	  	account.setEmail("AdminAccount@email.com");
-	  	Services services = new Services(accountRepository, new BCryptPasswordEncoder());
-	  	account.setPassword(services.getHash("AdminPassword"));
+
+	  	account.setPassword(services.createHash("AdminPassword"));
 	  	account.setCustomer(customer);
 	  	account.setAccountType(AccountType.Admin);
 	  	

@@ -29,8 +29,6 @@ import base.Customer;
 import base.container.AccountListContainer;
 import base.repository.AccountRepository;
 import base.repository.CustomerRepository;
-import base.utility.Hashing;
-import base.utility.Hashing.CannotPerformOperationException;
 import base.utility.Services;
 
 @RequestMapping("/account")
@@ -39,11 +37,13 @@ public class AccountController {
 
 	AccountRepository accountRepository;
 	CustomerController customerController;
+	Services services;
 
 	@Autowired
-	public AccountController(AccountRepository accountRepository, CustomerController customerController) {
+	public AccountController(AccountRepository accountRepository, CustomerController customerController, Services services) {
 		this.accountRepository = accountRepository;
 		this.customerController = customerController;
+		this.services = services;
 	}
 
 	@ModelAttribute(name = "accountList")
@@ -94,11 +94,9 @@ public class AccountController {
 	public String createAccount(@Valid Account account, Errors errors, Model model) {
 		if (errors.hasErrors()) {
 		}
-		try {
-			account.setPassword(Hashing.createHash(account.getPassword()));
-		} catch (CannotPerformOperationException e1) {
-			e1.printStackTrace();
-		}
+		
+		account.setPassword(services.createHash(account.getPassword()));
+
 		try {
 			accountRepository.save(account);
 		} catch (DataIntegrityViolationException e) {

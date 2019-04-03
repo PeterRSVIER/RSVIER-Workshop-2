@@ -11,24 +11,14 @@ import base.repository.AccountRepository;
 @Service("userService")
 public class Services {
 
-    private AccountRepository accountRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public Services(AccountRepository accountRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-    this.accountRepository = accountRepository;
+    public Services(BCryptPasswordEncoder bCryptPasswordEncoder) {
     this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 }
 
-    public Account getAccountByEmail(String email) {
-        Account account = accountRepository.getAccountByEmail(email);
-        if (account!= null) {
-        	return account;
-        }
-        throw new UsernameNotFoundException("No account with email '" + email + "has been found");
-    }
-
-    public String getHash(String password) {
+    public String createHash(String password) {
 		return bCryptPasswordEncoder.encode(password);
         
     }
