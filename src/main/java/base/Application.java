@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,8 +19,11 @@ import base.repository.CustomerRepository;
 import base.repository.OrderLineRepository;
 import base.repository.OrderRepository;
 import base.repository.ProductRepository;
+import base.utility.Services;
+
 
 @SpringBootApplication
+@EnableWebSecurity
 public class Application implements WebMvcConfigurer {
 
 	@Override
@@ -31,6 +36,12 @@ public class Application implements WebMvcConfigurer {
 		SpringApplication.run(Application.class, args);
 	}
 
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+    
 	@Bean
   public CommandLineRunner dataLoader (CustomerRepository customerRepository, AccountRepository accountRepository, ProductRepository productRepository, OrderRepository orderRepository, OrderLineRepository orderLineRepository) {
     return new CommandLineRunner() {
@@ -57,7 +68,8 @@ public class Application implements WebMvcConfigurer {
  
 	    Account account = new Account();
 	  	account.setEmail("AdminAccount@email.com");
-	  	account.setPassword("AdminPassword");
+	  	Services services = new Services(accountRepository, new BCryptPasswordEncoder());
+	  	account.setPassword(services.getHash("AdminPassword"));
 	  	account.setCustomer(customer);
 	  	account.setAccountType(AccountType.Admin);
 	  	

@@ -12,6 +12,12 @@
 
 		<div class="Header"></div>
 		<img th:src="@{/images/header.png}" alt="Header" class="center" />
+		<div class="ml-3">
+		<font color="white">
+			<a th:text ="'Logged in with email: ' + ${#authentication.getPrincipal().getUsername()}"></a>
+		</font>
+		</div>
+		
 		<nav>
 			<ul class="nav nav-pills nav-fill bg-header-purple">
 				<li class="nav-item"><a th:href="@{/account}"
@@ -22,7 +28,7 @@
 					class="nav-link active">Orders</a></li>
 				<li class="nav-item"><a th:href="@{/product}"
 					class="nav-link active">Products</a></li>
-				<li class="nav-item"><a th:href="@{/}"
+				<li class="nav-item"><a th:href="@{/logout}"
 					class="nav-link active">Logout</a></li>
 			</ul>
 		</nav>

@@ -36,4 +36,6 @@ public class Account {
 	public enum AccountType {
 		Admin, Worker, Customer
 	}
+	boolean active = true;
+	
 }

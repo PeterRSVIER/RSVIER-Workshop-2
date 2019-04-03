@@ -29,6 +29,9 @@ import base.Customer;
 import base.container.AccountListContainer;
 import base.repository.AccountRepository;
 import base.repository.CustomerRepository;
+import base.utility.Hashing;
+import base.utility.Hashing.CannotPerformOperationException;
+import base.utility.Services;
 
 @RequestMapping("/account")
 @Controller
@@ -91,8 +94,11 @@ public class AccountController {
 	public String createAccount(@Valid Account account, Errors errors, Model model) {
 		if (errors.hasErrors()) {
 		}
-
-		System.out.println("Account dat hij probeert op te slaan: " + account);
+		try {
+			account.setPassword(Hashing.createHash(account.getPassword()));
+		} catch (CannotPerformOperationException e1) {
+			e1.printStackTrace();
+		}
 		try {
 			accountRepository.save(account);
 		} catch (DataIntegrityViolationException e) {

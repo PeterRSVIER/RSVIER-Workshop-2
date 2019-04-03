@@ -1,3 +1,6 @@
+.top_aligner {
+    vertical-align: top;
+}
 
 .grid-container {
   display: grid;

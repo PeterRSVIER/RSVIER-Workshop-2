@@ -35,7 +35,7 @@ public class LoginController {
 	public Account getAccount() {
 		return new Account();
 	}
-
+/*
 	@PostMapping
 	public String CheckLoginInput(Account account, Model model) {
 
@@ -57,6 +57,6 @@ public class LoginController {
 		model.addAttribute("incorrectLogin", new String ("De combinatie van het ingevoerde email en wachtwoord is incorrect"));
 
 		return "login";
-
 	}
+	*/
 }

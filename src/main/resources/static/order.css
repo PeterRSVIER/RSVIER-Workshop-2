@@ -10,6 +10,11 @@ label {
     vertical-align: bottom;
     width: 0px;
 }
+
+.top_aligner {
+    vertical-align: top;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 0.5fr 0.9fr 0.6fr;

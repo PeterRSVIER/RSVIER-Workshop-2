@@ -12,7 +12,10 @@
 		<div class="header">
 		<div class="mt-3 mb-3">
 			<img th:src="@{/images/header.png}" alt="Header" class="center" />
-			</div>
+		</div>
+			<font color="white">
+				<a th:text ="'Logged in with email: ' + ${#authentication.getPrincipal().getUsername()}"></a>
+			</font>
 		</div>
 
 		<div class="orderRechts">
